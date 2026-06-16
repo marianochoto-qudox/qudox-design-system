@@ -141,36 +141,48 @@ module.exports = {
 
 | Token              | Familia          | Uso                                                                 |
 | ------------------ | ---------------- | ------------------------------------------------------------------- |
-| `font-display`     | **Empower Serif** | Titulares, frases de impacto, énfasis editoriales, momentos de marca. |
+| `font-display`     | **Newsreader**    | Titulares, frases de impacto, énfasis editoriales, momentos de marca. **Estilo dominante: Semibold (600) Italic.** |
 | `font-body`        | **Manrope**       | Cuerpo, subtítulos, etiquetas, bullets, tablas, captions, UI.       |
 
-**Pesos disponibles:**
-- Empower Serif: `Regular`, `Italic`.
-- Manrope: `Semibold (600)`, `Bold (700)`, `Extra Bold (800)`. *(Regular y Medium se usan en cuerpos; añadirlos al cargar la fuente.)*
+**Pesos / estilos disponibles:**
+- Newsreader: `Semibold 600 Italic` (estilo primario de marca), `Regular 400 Italic` (énfasis secundario). Se puede cargar la familia variable completa (opsz 6–72, wght 400–700, italic) desde Google Fonts.
+- Manrope: `Regular (400)`, `Medium (500)`, `Semibold (600)`, `Bold (700)`, `Extra Bold (800)`.
+
+**Carga (Google Fonts):**
+
+```html
+<link href="https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,400..700;1,6..72,400..700&family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+```
 
 ### 4.2 Jerarquía de texto
 
 | Rol                  | Familia          | Peso / estilo                                  |
 | -------------------- | ---------------- | ---------------------------------------------- |
-| Título principal     | Empower Serif    | Regular o Italic según énfasis                 |
-| Frase de impacto     | Empower Serif    | Regular / Italic                               |
+| Título principal     | Newsreader       | **Semibold 600 Italic** (default de marca)     |
+| Frase de impacto     | Newsreader       | Semibold 600 Italic                            |
 | Subtítulo            | Manrope          | Bold (700) o Semibold (600)                    |
-| Cuerpo               | Manrope          | Regular o Medium                               |
+| Cuerpo               | Manrope          | Regular (400) o Medium (500)                   |
 | Etiqueta / overline  | Manrope          | Semibold en MAYÚSCULAS o small caps           |
 | Dato destacado       | Manrope          | Extra Bold (800)                               |
 
 ### 4.3 Reglas de combinación
 
-- Empower Serif aporta **carácter**; Manrope sostiene **lectura, estructura y precisión**.
-- Patrones válidos: título serif + cuerpo sans / palabra serif dentro de frase sans / dato sans con énfasis serif.
+- **Newsreader Italic aporta carácter editorial**; Manrope sostiene **lectura, estructura y precisión**.
+- El italic semibold es la firma de marca en titulares — no se intercambia por la versión upright sin razón.
+- Truco editorial: dentro de un título italic, una palabra en **upright** (estilo normal) crea un punto de énfasis distinto sin cambiar de peso. Ej.: *Together, we* **power** *growth.*
+- Patrones válidos: título Newsreader italic + cuerpo Manrope / palabra Newsreader dentro de frase Manrope / dato Manrope con énfasis Newsreader.
 - ❌ No usar tipografías externas sin criterio.
 
 ### 4.4 Tokens CSS
 
 ```css
 :root {
-  --font-display: 'Empower Serif', 'Times New Roman', serif;
+  --font-display: 'Newsreader', 'Times New Roman', serif;
   --font-body: 'Manrope', system-ui, -apple-system, 'Segoe UI', sans-serif;
+
+  /* Estilo de marca por defecto para display */
+  --display-weight: 600;
+  --display-style: italic;
 
   /* Pesos */
   --fw-regular: 400;
@@ -197,9 +209,17 @@ module.exports = {
   --lh-relaxed: 1.65;   /* lectura larga */
 
   /* Tracking */
-  --ls-tight: -0.02em;  /* títulos serif grandes */
+  --ls-tight: -0.025em; /* títulos newsreader grandes */
   --ls-normal: 0;
   --ls-wide: 0.08em;    /* etiquetas en mayúsculas */
+}
+
+/* Aplicación por defecto a titulares */
+h1, h2, h3 {
+  font-family: var(--font-display);
+  font-weight: var(--display-weight);
+  font-style: var(--display-style);
+  letter-spacing: var(--ls-tight);
 }
 ```
 
@@ -209,11 +229,18 @@ module.exports = {
 theme: {
   extend: {
     fontFamily: {
-      display: ['"Empower Serif"', 'serif'],
+      display: ['Newsreader', 'serif'],
       body:    ['Manrope', 'system-ui', 'sans-serif'],
     },
   },
 }
+```
+
+```html
+<!-- Titular de marca por defecto -->
+<h1 class="font-display font-semibold italic">
+  Together, we <span class="not-italic">power</span> growth.
+</h1>
 ```
 
 ---
@@ -463,7 +490,7 @@ Presentaciones · Propuestas comerciales · Documentos internos · Redes sociale
 - Usar el logo con suficiente contraste.
 - Respetar el área de seguridad del logo.
 - Aplicar la paleta con intención (75% dark+white, 15% cyan, 10% yellow+gradient).
-- Usar Empower Serif para momentos de marca.
+- Usar Newsreader Semibold Italic para momentos de marca.
 - Usar Manrope para claridad y lectura.
 - Mantener pantallas limpias y jerárquicas.
 - Usar la Q como recurso propietario.
@@ -491,7 +518,7 @@ Presentaciones · Propuestas comerciales · Documentos internos · Redes sociale
 - [ ] ¿El logo está bien aplicado (versión, contraste, área de respeto, tamaño mínimo)?
 - [ ] ¿La Q se usa correctamente (sin deformar, rotar ni recolorear)?
 - [ ] ¿El color tiene contraste suficiente?
-- [ ] ¿La tipografía respeta la jerarquía (Empower Serif en titulares, Manrope en cuerpo)?
+- [ ] ¿La tipografía respeta la jerarquía (Newsreader Semibold Italic en titulares, Manrope en cuerpo)?
 - [ ] ¿El patrón suma sin saturar?
 - [ ] ¿El mensaje suena a Qudox (claro, estratégico, accionable)?
 - [ ] ¿La comunicación conecta con crecimiento?
