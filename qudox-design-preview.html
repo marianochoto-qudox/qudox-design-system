@@ -1,0 +1,1658 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Qudox — Design System Preview</title>
+<meta name="description" content="Sistema de diseño de Qudox. Growth Marketing Company AI First." />
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,400..700;1,6..72,400..700&family=Manrope:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+
+<style>
+  /* ============================================================
+     Qudox Design System Preview
+     Display: Newsreader Semibold Italic (Google Fonts).
+     Body: Manrope (Google Fonts).
+     ============================================================ */
+
+  :root {
+    /* Brand */
+    --qx-dark: #070A0B;
+    --qx-white: #FFFFFF;
+    --qx-cyan: #00FFEF;
+    --qx-yellow: #EAFF00;
+    --qx-green: #16B87A;
+
+    /* Editorial neutrals for the preview page itself */
+    --ink: #070A0B;
+    --ink-70: rgba(7, 10, 11, 0.72);
+    --ink-50: rgba(7, 10, 11, 0.50);
+    --ink-30: rgba(7, 10, 11, 0.28);
+    --ink-10: rgba(7, 10, 11, 0.10);
+    --rule: rgba(7, 10, 11, 0.12);
+    --paper: #FFFFFF;
+    --paper-2: #FAFAF9;
+
+    /* Type */
+    --font-display: 'Newsreader', 'Times New Roman', serif;
+    --font-body: 'Manrope', system-ui, -apple-system, 'Segoe UI', sans-serif;
+    --font-mono: 'JetBrains Mono', ui-monospace, 'SFMono-Regular', Menlo, monospace;
+
+    --max: 1180px;
+  }
+
+  * { box-sizing: border-box; }
+  html, body { margin: 0; padding: 0; }
+  body {
+    font-family: var(--font-body);
+    background: var(--paper);
+    color: var(--ink);
+    font-size: 16px;
+    line-height: 1.55;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    text-rendering: optimizeLegibility;
+  }
+  img, svg { display: block; max-width: 100%; }
+  a { color: inherit; }
+
+  /* ---------- Topbar ---------- */
+  .topbar {
+    position: sticky;
+    top: 0;
+    background: rgba(255, 255, 255, 0.86);
+    backdrop-filter: saturate(160%) blur(10px);
+    -webkit-backdrop-filter: saturate(160%) blur(10px);
+    border-bottom: 1px solid var(--rule);
+    z-index: 50;
+  }
+  .topbar-inner {
+    max-width: var(--max);
+    margin: 0 auto;
+    padding: 14px 32px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 24px;
+  }
+  .topbar-brand {
+    font-family: var(--font-body);
+    font-weight: 600;
+    font-size: 14px;
+    letter-spacing: 0.02em;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    color: var(--ink);
+  }
+  .topbar-brand .q-mark {
+    height: 22px;
+    width: auto;
+    color: var(--ink);
+    flex-shrink: 0;
+  }
+  .topbar-brand .q-mark path { fill: currentColor; }
+  .topbar-brand .label {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+  }
+  .topbar-brand .label::before {
+    content: '';
+    display: inline-block;
+    width: 1px;
+    height: 16px;
+    background: var(--ink-30);
+  }
+  .topbar-brand .label span { color: var(--ink-50); font-weight: 500; }
+  .topbar-meta {
+    font-family: var(--font-mono);
+    font-size: 11px;
+    text-transform: uppercase;
+    letter-spacing: 0.12em;
+    color: var(--ink-50);
+  }
+
+  /* ---------- Layout ---------- */
+  main { max-width: var(--max); margin: 0 auto; padding: 0 32px; }
+  section { padding: 96px 0; border-bottom: 1px solid var(--rule); }
+  section:last-of-type { border-bottom: none; }
+
+  .eyebrow {
+    font-family: var(--font-mono);
+    font-size: 11px;
+    text-transform: uppercase;
+    letter-spacing: 0.18em;
+    color: var(--ink-50);
+    margin: 0 0 18px;
+  }
+  .eyebrow .num {
+    display: inline-block;
+    color: var(--ink);
+    margin-right: 12px;
+  }
+
+  h1, h2 { font-family: var(--font-display); font-weight: 600; font-style: italic; margin: 0; }
+  h1 {
+    font-size: clamp(48px, 8vw, 112px);
+    line-height: 0.96;
+    letter-spacing: -0.025em;
+  }
+  h2 {
+    font-size: clamp(34px, 4.5vw, 56px);
+    line-height: 1.04;
+    letter-spacing: -0.018em;
+    margin: 0 0 12px;
+  }
+  h3 {
+    font-family: var(--font-body);
+    font-weight: 700;
+    font-size: 20px;
+    line-height: 1.25;
+    letter-spacing: -0.005em;
+    margin: 0;
+  }
+  /* Allow upright "em" inside italic headings for contrast */
+  h1 em, h2 em { font-style: normal; }
+
+  p { margin: 0 0 16px; max-width: 70ch; color: var(--ink-70); }
+  p.lead { font-size: 18px; color: var(--ink); max-width: 60ch; }
+
+  .section-head {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 12px;
+    margin-bottom: 48px;
+  }
+  .section-head p { max-width: 60ch; }
+
+  /* ---------- Hero ---------- */
+  .hero { padding: 88px 0 72px; border-bottom: 1px solid var(--rule); }
+  .hero h1 em { font-style: italic; }
+  .hero-meta {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 12px 28px;
+    margin-top: 40px;
+    font-family: var(--font-mono);
+    font-size: 12px;
+    text-transform: uppercase;
+    letter-spacing: 0.12em;
+    color: var(--ink-50);
+  }
+  .hero-meta span strong {
+    color: var(--ink);
+    font-weight: 500;
+    margin-right: 6px;
+  }
+  .hero-tagline {
+    margin-top: 32px;
+    font-family: var(--font-body);
+    font-weight: 400;
+    font-size: 18px;
+    color: var(--ink-70);
+    max-width: 60ch;
+  }
+
+  /* ---------- Color ---------- */
+  .palette-label {
+    font-family: var(--font-mono);
+    font-size: 11px;
+    text-transform: uppercase;
+    letter-spacing: 0.16em;
+    color: var(--ink-50);
+    margin: 0 0 20px;
+  }
+  .palette-label--secondary { margin-top: 56px; }
+  .palette {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 14px;
+  }
+  .palette-digital { grid-template-columns: repeat(3, 1fr); max-width: 720px; }
+  .swatch {
+    border: 1px solid var(--rule);
+    border-radius: 6px;
+    overflow: hidden;
+    background: var(--paper);
+  }
+  .swatch .chip {
+    aspect-ratio: 4 / 3;
+    width: 100%;
+    position: relative;
+    min-height: 140px; /* fallback if aspect-ratio unsupported */
+  }
+  .swatch .chip .hex {
+    position: absolute;
+    bottom: 12px;
+    left: 12px;
+    font-family: var(--font-mono);
+    font-size: 11px;
+    letter-spacing: 0.04em;
+    padding: 3px 7px;
+    border-radius: 3px;
+    background: rgba(255,255,255,0.92);
+    color: var(--ink);
+  }
+  .swatch .meta {
+    padding: 14px 16px 16px;
+    border-top: 1px solid var(--rule);
+  }
+  .swatch .meta .name {
+    font-family: var(--font-body);
+    font-weight: 700;
+    font-size: 18px;
+    line-height: 1.1;
+    margin-bottom: 4px;
+    letter-spacing: -0.01em;
+  }
+  .swatch .meta .role {
+    font-family: var(--font-mono);
+    font-size: 10px;
+    text-transform: uppercase;
+    letter-spacing: 0.12em;
+    color: var(--ink-50);
+    margin-bottom: 10px;
+  }
+  .swatch .meta dl {
+    margin: 0;
+    display: grid;
+    grid-template-columns: 36px 1fr;
+    gap: 3px 10px;
+    font-family: var(--font-mono);
+    font-size: 10.5px;
+    color: var(--ink-70);
+    line-height: 1.5;
+  }
+  .swatch .meta dt { color: var(--ink-50); }
+  .swatch .meta dd { margin: 0; }
+
+  /* Color chips */
+  .swatch.chip-green .chip       { background: #16B87A; }
+  .swatch.chip-green-bright .chip{ background: #38E08C; }
+  .swatch.chip-yellow-green .chip{ background: #B6E02A; }
+  .swatch.chip-dark-deep .chip   { background: #06241B; }
+  .swatch.chip-dark .chip        { background: #0D1512; }
+  .swatch.chip-ink .chip         { background: #1F2937; }
+  .swatch.chip-ink-muted .chip   { background: #5D6B63; }
+  .swatch.chip-white .chip       { background: #FFFFFF; border-bottom: 1px solid var(--rule); }
+  .swatch.chip-cyan .chip        { background: #00FFEF; }
+  .swatch.chip-yellow-electric .chip { background: #EAFF00; }
+  .swatch.chip-dark-pure .chip   { background: #070A0B; }
+  .swatch.chip-dark-deep .chip .hex,
+  .swatch.chip-dark .chip .hex,
+  .swatch.chip-ink .chip .hex,
+  .swatch.chip-ink-muted .chip .hex,
+  .swatch.chip-dark-pure .chip .hex { background: rgba(255,255,255,0.94); }
+
+  .gradient-block {
+    margin-top: 56px;
+    border: 1px solid var(--rule);
+    border-radius: 6px;
+    overflow: hidden;
+  }
+  .gradient-bar {
+    height: 220px;
+    background: linear-gradient(135deg, var(--qx-cyan) 0%, var(--qx-yellow) 100%);
+    position: relative;
+  }
+  .gradient-bar .stop {
+    position: absolute;
+    bottom: 14px;
+    font-family: var(--font-mono);
+    font-size: 12px;
+    background: rgba(255,255,255,0.92);
+    color: var(--ink);
+    padding: 4px 8px;
+    border-radius: 3px;
+  }
+  .gradient-bar .stop.l { left: 14px; }
+  .gradient-bar .stop.r { right: 14px; }
+  .gradient-meta {
+    padding: 18px 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    gap: 20px;
+  }
+  .gradient-meta .label {
+    font-family: var(--font-body);
+    font-weight: 700;
+    font-size: 17px;
+    letter-spacing: -0.005em;
+  }
+  .gradient-meta .note {
+    font-family: var(--font-mono);
+    font-size: 11px;
+    text-transform: uppercase;
+    letter-spacing: 0.12em;
+    color: var(--ink-50);
+  }
+
+  .ratio {
+    margin-top: 56px;
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 14px;
+  }
+  .ratio .label { font-family: var(--font-mono); font-size: 11px; text-transform: uppercase; letter-spacing: 0.12em; color: var(--ink-50); }
+  .ratio .bar {
+    display: flex;
+    height: 56px;
+    border-radius: 4px;
+    overflow: hidden;
+    border: 1px solid var(--rule);
+  }
+  .ratio .bar > span {
+    display: flex;
+    align-items: center;
+    padding: 0 14px;
+    font-family: var(--font-mono);
+    font-size: 11px;
+  }
+  .ratio .bar .b-bg { background: #FFFFFF; color: var(--ink); flex: 65; border-right: 1px solid var(--rule); }
+  .ratio .bar .b-text { background: #1F2937; color: #FFFFFF; flex: 22; }
+  .ratio .bar .b-accent { background: #16B87A; color: #06241B; flex: 13; }
+
+  /* ---------- Typography ---------- */
+  .typo-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 24px;
+  }
+  .typo-card {
+    border: 1px solid var(--rule);
+    border-radius: 6px;
+    padding: 32px;
+    background: var(--paper);
+  }
+  .typo-card .label {
+    font-family: var(--font-mono);
+    font-size: 10px;
+    text-transform: uppercase;
+    letter-spacing: 0.18em;
+    color: var(--ink-50);
+    margin-bottom: 16px;
+  }
+  .typo-card .family {
+    font-size: 56px;
+    line-height: 1;
+    margin: 0 0 12px;
+    letter-spacing: -0.02em;
+  }
+  .typo-card.display .family { font-family: var(--font-display); font-weight: 600; font-style: italic; letter-spacing: -0.015em; }
+  .typo-card.body .family { font-family: var(--font-body); font-weight: 700; }
+  .typo-card .specimen {
+    margin: 28px 0 24px;
+    border-top: 1px solid var(--rule);
+    padding-top: 24px;
+  }
+  .typo-card.display .specimen p {
+    font-family: var(--font-display);
+    font-weight: 600;
+    font-style: italic;
+    font-size: 30px;
+    line-height: 1.15;
+    color: var(--ink);
+    margin: 0 0 8px;
+    max-width: none;
+  }
+  .typo-card.display .specimen p em { font-style: normal; color: var(--ink-70); font-weight: 600; }
+  .typo-card.body .specimen p {
+    font-family: var(--font-body);
+    font-size: 16px;
+    line-height: 1.55;
+    color: var(--ink-70);
+    margin: 0 0 8px;
+    max-width: none;
+  }
+  .typo-card.body .specimen p strong { color: var(--ink); font-weight: 700; }
+  .typo-card .glyphs {
+    font-family: inherit;
+    border-top: 1px solid var(--rule);
+    padding-top: 16px;
+    font-size: 13px;
+    line-height: 1.6;
+    color: var(--ink-70);
+    letter-spacing: 0.02em;
+  }
+  .typo-card.display .glyphs { font-family: var(--font-display); }
+  .typo-card.body .glyphs { font-family: var(--font-body); }
+  .typo-card .role-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 6px;
+    margin-top: 18px;
+  }
+  .role-tag {
+    font-family: var(--font-mono);
+    font-size: 10px;
+    text-transform: uppercase;
+    letter-spacing: 0.12em;
+    padding: 4px 9px;
+    border: 1px solid var(--ink-10);
+    border-radius: 100px;
+    color: var(--ink-70);
+  }
+
+  /* Type scale */
+  .scale {
+    margin-top: 56px;
+    border-top: 1px solid var(--rule);
+  }
+  .scale-row {
+    display: grid;
+    grid-template-columns: 90px 1fr 140px;
+    gap: 24px;
+    align-items: baseline;
+    padding: 22px 0;
+    border-bottom: 1px solid var(--rule);
+  }
+  .scale-row .role {
+    font-family: var(--font-mono);
+    font-size: 10px;
+    text-transform: uppercase;
+    letter-spacing: 0.14em;
+    color: var(--ink-50);
+  }
+  .scale-row .sample { letter-spacing: -0.01em; color: var(--ink); }
+  .scale-row .sample.serif { font-family: var(--font-display); font-weight: 600; font-style: italic; letter-spacing: -0.015em; }
+  .scale-row .sample.serif-italic { font-family: var(--font-display); font-style: italic; font-weight: 600; letter-spacing: -0.012em; }
+  .scale-row .sample.body-bold { font-family: var(--font-body); font-weight: 700; }
+  .scale-row .sample.body-reg { font-family: var(--font-body); font-weight: 400; }
+  .scale-row .sample.body-eb { font-family: var(--font-body); font-weight: 800; }
+  .scale-row .sample.label { font-family: var(--font-body); font-weight: 600; text-transform: uppercase; letter-spacing: 0.14em; font-size: 13px; }
+  .scale-row .spec {
+    font-family: var(--font-mono);
+    font-size: 11px;
+    color: var(--ink-50);
+    text-align: right;
+  }
+
+  /* ---------- Logo ---------- */
+  .logo-grid {
+    display: grid;
+    grid-template-columns: 1.4fr 1fr;
+    gap: 24px;
+  }
+  .logo-stage {
+    background: var(--paper-2);
+    border: 1px solid var(--rule);
+    border-radius: 6px;
+    padding: 72px 48px 40px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 32px;
+    min-height: 320px;
+  }
+  .logo-stage.dark { background: var(--qx-dark); border-color: var(--qx-dark); }
+  .brand-logo {
+    width: 100%;
+    max-width: 420px;
+    height: auto;
+    color: var(--ink);
+  }
+  .brand-logo path, .brand-logo polygon, .brand-logo rect { fill: currentColor; }
+  .logo-stage.dark .brand-logo { color: var(--qx-white); }
+  .logo-stage .caption {
+    font-family: var(--font-mono);
+    font-size: 10px;
+    text-transform: uppercase;
+    letter-spacing: 0.14em;
+    color: var(--ink-50);
+    margin-top: auto;
+  }
+  .logo-stage.dark .caption { color: rgba(255,255,255,0.5); }
+
+  .specs-list {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    border-top: 1px solid var(--rule);
+  }
+  .specs-list li {
+    display: grid;
+    grid-template-columns: 1fr auto;
+    gap: 16px;
+    align-items: baseline;
+    padding: 16px 0;
+    border-bottom: 1px solid var(--rule);
+    font-size: 14px;
+  }
+  .specs-list li .k { color: var(--ink-70); }
+  .specs-list li .v { font-family: var(--font-mono); font-size: 12px; color: var(--ink); }
+
+  /* ---------- Presentation slides ---------- */
+  .slides-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 28px;
+  }
+  .slide-card {
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 18px;
+  }
+  .slide-mini {
+    aspect-ratio: 16 / 9;
+    border-radius: 8px;
+    overflow: hidden;
+    position: relative;
+    background: #FFFFFF;
+    border: 1px solid var(--rule);
+    box-shadow: 0 1px 0 rgba(0,0,0,0.02), 0 12px 32px -16px rgba(0,0,0,0.15);
+    font-size: 10px; /* base scale-down for mini slide */
+  }
+  .slide-card figcaption {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+    padding: 0 4px;
+  }
+  .slide-tag {
+    font-family: var(--font-mono);
+    font-size: 10px;
+    text-transform: uppercase;
+    letter-spacing: 0.16em;
+    color: var(--ink-50);
+  }
+  .slide-name {
+    font-family: var(--font-body);
+    font-weight: 700;
+    font-size: 17px;
+    color: var(--ink);
+  }
+  .slide-card figcaption p {
+    font-size: 14px;
+    color: var(--ink-70);
+    margin: 4px 0 0;
+    line-height: 1.5;
+  }
+
+  /* --- Cover mini --- */
+  .slide-mini--cover {
+    background: #06241B url('slides/cover.jpg') center / cover no-repeat;
+    color: #FFFFFF;
+  }
+  .slide-mini--cover .cover-bg {
+    display: none; /* using real image now */
+  }
+  .slide-mini--cover .cover-content {
+    display: none; /* the real cover.jpg already includes all the content */
+  }
+  .slide-mini--closing .closing-content {
+    display: none; /* the real cover.jpg already includes the closing content */
+  }
+  .cover-logo {
+    font-family: var(--font-body);
+    font-weight: 800;
+    letter-spacing: 0.2em;
+    font-size: 11px;
+    color: #FFFFFF;
+    margin-bottom: 12%;
+  }
+  .cover-title {
+    font-family: var(--font-display);
+    font-weight: 600;
+    font-style: italic;
+    font-size: 28px;
+    line-height: 1.05;
+    margin-bottom: 4%;
+    letter-spacing: -0.02em;
+  }
+  .cover-sub {
+    font-family: var(--font-body);
+    font-weight: 400;
+    font-size: 9px;
+    color: rgba(255,255,255,0.85);
+    max-width: 80%;
+    line-height: 1.4;
+  }
+
+  /* --- TOC mini --- */
+  .slide-mini--toc {
+    background: #FFFFFF;
+    padding: 6% 7%;
+    position: relative;
+  }
+  .toc-eyebrow {
+    font-family: var(--font-body);
+    font-weight: 700;
+    font-size: 7px;
+    letter-spacing: 0.18em;
+    color: var(--ink-50);
+    margin-bottom: 6px;
+  }
+  .toc-title {
+    font-family: var(--font-display);
+    font-weight: 600;
+    font-style: italic;
+    font-size: 22px;
+    line-height: 1.04;
+    color: #0D1512;
+    margin-bottom: 16px;
+    letter-spacing: -0.018em;
+  }
+  .toc-items {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 14px 22px;
+    margin-top: 14px;
+  }
+  .toc-item {
+    display: grid;
+    grid-template-columns: 26px 1fr;
+    gap: 8px;
+    border-top: 1px solid #0D1512;
+    padding-top: 6px;
+  }
+  .toc-num {
+    font-family: var(--font-display);
+    font-weight: 600;
+    font-style: italic;
+    font-size: 14px;
+    color: #16B87A;
+    line-height: 1;
+  }
+  .toc-h {
+    font-family: var(--font-body);
+    font-weight: 700;
+    font-size: 10px;
+    color: #0D1512;
+    line-height: 1.1;
+    margin-bottom: 2px;
+  }
+  .toc-p {
+    font-family: var(--font-body);
+    font-size: 8px;
+    color: var(--ink-70);
+    line-height: 1.3;
+  }
+  .slide-footer-band {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    height: 14%;
+    background: url('slides/footer-white.png') left bottom / 100% 100% no-repeat;
+  }
+  .slide-footer-band::before { display: none; }
+  .slide-footer-band::after { display: none; }
+
+  /* --- Section divider mini --- */
+  .slide-mini--divider {
+    background: #1F1F1F;
+    padding: 11% 7% 14%;
+    color: #FFFFFF;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    position: relative;
+  }
+  .divider-num {
+    font-family: var(--font-display);
+    font-weight: 600;
+    font-style: italic;
+    font-size: 22px;
+    color: #38E08C;
+    line-height: 1;
+    margin-bottom: 4px;
+  }
+  .divider-title {
+    font-family: var(--font-display);
+    font-weight: 600;
+    font-style: italic;
+    font-size: 26px;
+    color: #FFFFFF;
+    line-height: 1.02;
+    margin-bottom: 10px;
+    letter-spacing: -0.02em;
+  }
+  .divider-sub {
+    font-family: var(--font-body);
+    font-size: 9px;
+    color: rgba(255,255,255,0.7);
+    max-width: 60%;
+    line-height: 1.45;
+  }
+  .divider-lines {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    height: 30%;
+    background: url('slides/footer-black.png') left bottom / 100% 100% no-repeat;
+    pointer-events: none;
+  }
+  .divider-logo {
+    display: none; /* the real footer-black.png already includes the logo */
+  }
+
+  /* --- Content 2col mini --- */
+  .slide-mini--content {
+    background: #FFFFFF;
+    padding: 5% 6% 0;
+    position: relative;
+  }
+  .content-eyebrow {
+    font-family: var(--font-body);
+    font-weight: 700;
+    font-size: 7px;
+    letter-spacing: 0.18em;
+    color: var(--ink-50);
+    margin-bottom: 4px;
+  }
+  .content-title {
+    font-family: var(--font-display);
+    font-weight: 600;
+    font-style: italic;
+    font-size: 18px;
+    color: #0D1512;
+    line-height: 1.05;
+    letter-spacing: -0.02em;
+    margin-bottom: 6px;
+  }
+  .content-rule {
+    width: 55%;
+    height: 1.5px;
+    background: #16B87A;
+    margin-bottom: 12px;
+  }
+  .content-body {
+    display: grid;
+    grid-template-columns: 1.3fr 1fr;
+    gap: 14px;
+    margin-bottom: 16%;
+  }
+  .content-col { display: flex; flex-direction: column; gap: 5px; }
+  .content-sub-eyebrow {
+    font-family: var(--font-body);
+    font-weight: 700;
+    font-size: 7px;
+    letter-spacing: 0.16em;
+    color: #16B87A;
+  }
+  .content-h {
+    font-family: var(--font-body);
+    font-weight: 700;
+    font-size: 11px;
+    color: #0D1512;
+    line-height: 1.15;
+  }
+  .content-p {
+    font-family: var(--font-body);
+    font-size: 8px;
+    color: var(--ink-70);
+    line-height: 1.4;
+  }
+  .content-callout {
+    background: #FFFFFF;
+    border-left: 2.5px solid #16B87A;
+    padding: 6px 9px;
+    font-family: var(--font-body);
+    font-size: 8px;
+    color: var(--ink-70);
+    line-height: 1.4;
+    margin-top: 4px;
+  }
+  .content-callout strong {
+    font-weight: 700;
+    color: #16B87A;
+  }
+  .content-img {
+    background:
+      linear-gradient(135deg, #B3B3B3, #5D5D5D),
+      radial-gradient(circle at 50% 60%, #888 0%, #444 100%);
+    border-radius: 6px;
+    min-height: 0;
+  }
+
+  /* --- Data mini --- */
+  .slide-mini--data {
+    background: #0D1512;
+    color: #FFFFFF;
+    padding: 10% 8%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+  }
+  .data-eyebrow {
+    font-family: var(--font-body);
+    font-weight: 700;
+    font-size: 8px;
+    letter-spacing: 0.18em;
+    color: rgba(255,255,255,0.55);
+    margin-bottom: 8px;
+  }
+  .data-big {
+    font-family: var(--font-body);
+    font-weight: 800;
+    font-size: 72px;
+    letter-spacing: -0.04em;
+    color: #38E08C;
+    line-height: 0.95;
+    margin-bottom: 12px;
+  }
+  .data-caption {
+    font-family: var(--font-body);
+    font-size: 11px;
+    color: rgba(255,255,255,0.8);
+    max-width: 75%;
+    line-height: 1.4;
+  }
+
+  /* --- Closing mini --- */
+  .slide-mini--closing {
+    background: #06241B url('slides/cover.jpg') center / cover no-repeat;
+    color: #FFFFFF;
+    position: relative;
+  }
+  .slide-mini--closing .cover-bg { display: none; }
+  .closing-title {
+    font-family: var(--font-display);
+    font-weight: 600;
+    font-style: italic;
+    font-size: 24px;
+    line-height: 1.05;
+    color: #FFFFFF;
+    margin-bottom: 16px;
+    letter-spacing: -0.02em;
+  }
+  .closing-meta {
+    font-family: var(--font-body);
+    font-weight: 700;
+    font-size: 9px;
+    letter-spacing: 0.16em;
+    color: #38E08C;
+    margin-bottom: 4px;
+  }
+  .closing-bullets {
+    font-family: var(--font-body);
+    font-size: 8px;
+    color: rgba(255,255,255,0.8);
+    margin-bottom: 16px;
+  }
+
+  /* ---------- Voice ---------- */
+  .voice-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 0;
+    border: 1px solid var(--rule);
+    border-radius: 6px;
+    overflow: hidden;
+  }
+  .voice-col {
+    padding: 28px 32px;
+  }
+  .voice-col.yes { background: var(--paper); }
+  .voice-col.no { background: var(--paper-2); border-left: 1px solid var(--rule); }
+  .voice-col .vc-label {
+    font-family: var(--font-mono);
+    font-size: 10px;
+    text-transform: uppercase;
+    letter-spacing: 0.18em;
+    margin-bottom: 18px;
+  }
+  .voice-col.yes .vc-label { color: var(--qx-green); }
+  .voice-col.no .vc-label { color: var(--ink-50); }
+  .voice-col ul { list-style: none; margin: 0; padding: 0; }
+  .voice-col li {
+    padding: 10px 0;
+    border-bottom: 1px solid var(--rule);
+    font-size: 15px;
+    color: var(--ink);
+  }
+  .voice-col li:last-child { border-bottom: none; }
+  .voice-col.no li { color: var(--ink-50); text-decoration: line-through; text-decoration-thickness: 1px; text-decoration-color: var(--ink-30); }
+
+  .vocab {
+    margin-top: 48px;
+    padding: 32px;
+    background: var(--paper-2);
+    border: 1px solid var(--rule);
+    border-radius: 6px;
+  }
+  .vocab .v-label {
+    font-family: var(--font-mono);
+    font-size: 10px;
+    text-transform: uppercase;
+    letter-spacing: 0.18em;
+    color: var(--ink-50);
+    margin-bottom: 18px;
+  }
+  .vocab .words {
+    font-family: var(--font-body);
+    font-weight: 600;
+    font-size: 17px;
+    line-height: 1.7;
+    color: var(--ink);
+    max-width: none;
+    letter-spacing: -0.005em;
+  }
+  .vocab .words span { display: inline-block; margin-right: 8px; }
+  .vocab .words span::after { content: '·'; margin-left: 8px; color: var(--ink-30); font-style: normal; }
+  .vocab .words span:last-child::after { content: ''; }
+
+  /* ---------- Do / Don't ---------- */
+  .dd-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 24px;
+  }
+  .dd-card {
+    border: 1px solid var(--rule);
+    border-radius: 6px;
+    padding: 28px 32px;
+  }
+  .dd-card.do { border-color: rgba(22, 184, 122, 0.5); }
+  .dd-card .dd-label {
+    font-family: var(--font-mono);
+    font-size: 10px;
+    text-transform: uppercase;
+    letter-spacing: 0.18em;
+    margin-bottom: 18px;
+  }
+  .dd-card.do .dd-label { color: var(--qx-green); }
+  .dd-card.dont .dd-label { color: var(--ink-50); }
+  .dd-card ul { list-style: none; margin: 0; padding: 0; }
+  .dd-card li {
+    display: grid;
+    grid-template-columns: 22px 1fr;
+    gap: 10px;
+    padding: 10px 0;
+    border-bottom: 1px solid var(--rule);
+    font-size: 14px;
+    line-height: 1.45;
+  }
+  .dd-card li:last-child { border-bottom: none; }
+  .dd-card li .m { font-family: var(--font-mono); font-size: 13px; color: var(--ink-50); }
+  .dd-card.do li .m { color: var(--qx-green); }
+
+  /* ---------- Footer ---------- */
+  footer { padding: 56px 32px 80px; border-top: 1px solid var(--rule); }
+  .footer-inner {
+    max-width: var(--max);
+    margin: 0 auto;
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    flex-wrap: wrap;
+    gap: 16px;
+    font-family: var(--font-mono);
+    font-size: 11px;
+    text-transform: uppercase;
+    letter-spacing: 0.12em;
+    color: var(--ink-50);
+  }
+  .footer-inner .brand {
+    font-family: var(--font-body);
+    font-weight: 600;
+    font-size: 13px;
+    text-transform: none;
+    letter-spacing: 0.02em;
+    color: var(--ink);
+  }
+
+  /* ---------- Responsive ---------- */
+  @media (max-width: 960px) {
+    .palette { grid-template-columns: repeat(2, 1fr); }
+    .palette-digital { grid-template-columns: repeat(2, 1fr); }
+    .typo-grid { grid-template-columns: 1fr; }
+    .logo-grid { grid-template-columns: 1fr; }
+    .components-grid { grid-template-columns: 1fr; }
+    .voice-grid { grid-template-columns: 1fr; }
+    .voice-col.no { border-left: none; border-top: 1px solid var(--rule); }
+    .dd-grid { grid-template-columns: 1fr; }
+    .slides-grid { grid-template-columns: 1fr; }
+    section { padding: 64px 0; }
+    main { padding: 0 24px; }
+    .topbar-inner { padding: 12px 24px; }
+  }
+  @media (max-width: 560px) {
+    .palette { grid-template-columns: 1fr; }
+    .logo-stage { padding: 40px 24px; min-height: 280px; }
+    .logo-stage .wordmark { font-size: 64px; }
+    .scale-row { grid-template-columns: 1fr; gap: 6px; }
+    .scale-row .spec { text-align: left; }
+    .kpi .kpi-value { font-size: 48px; }
+    .topbar-meta { display: none; }
+  }
+
+  /* ---------- Print ---------- */
+  @media print {
+    .topbar { position: static; background: white; backdrop-filter: none; }
+    section { break-inside: avoid; padding: 32px 0; }
+    body { font-size: 12px; }
+  }
+</style>
+</head>
+<body>
+
+<!-- ============ TOPBAR ============ -->
+<div class="topbar">
+  <div class="topbar-inner">
+    <div class="topbar-brand">
+      <svg class="q-mark" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 684 806.79" aria-label="Qudox">
+        <path d="M341.59,0C140.47,0,0,135.95,0,330.61c0,169.19,105.66,294.07,264.85,324.29v-143.59c-69.01-26.85-110.59-91.96-110.59-180.7,0-118.01,73.21-194.26,186.5-194.26s188.99,76.25,188.99,194.26-65.09,188.52-174.85,193.86l-11.1-.04c-18.09-.06-27.75,21.28-15.78,34.84l216.08,244.52c5.42,6.13,15.54,2.3,15.54-5.88v-151.88c0-11.66-4.31-22.91-12.11-31.58l-6.73-7.49c89.1-57.25,143.21-155.45,143.21-276.34C684,135.95,543.2,0,341.59,0Z"/>
+      </svg>
+      <span class="label">Qudox <span>· Design System</span></span>
+    </div>
+    <div class="topbar-meta">v1.0 · 2026</div>
+  </div>
+</div>
+
+<main>
+
+  <!-- ============ HERO ============ -->
+  <section class="hero">
+    <p class="eyebrow"><span class="num">00</span>Brand &amp; Presentation System</p>
+    <h1>Together,<br>we <em>power</em> growth.</h1>
+    <p class="lead" style="margin-top: 32px;">
+      Sistema de marca de <strong>Qudox</strong> para generación de presentaciones.
+      Define la paleta verde, la tipografía Newsreader Italic + Manrope, los tipos de slide,
+      el patrón y el tono — todo lo que un agente de IA necesita para producir decks idénticos
+      a los del estudio.
+    </p>
+    <div class="hero-meta">
+      <span><strong>Marca</strong> Qudox · Growth Marketing Company AI First</span>
+      <span><strong>Uso primario</strong> Decks de estrategia y propuesta</span>
+      <span><strong>Submarcas</strong> Hype · Blink · State of Digital</span>
+    </div>
+  </section>
+
+  <!-- ============ COLOR ============ -->
+  <section id="color">
+    <div class="section-head">
+      <p class="eyebrow"><span class="num">01</span>Color</p>
+      <h2>El verde es el color institucional de las <em>presentaciones</em>.</h2>
+      <p>Qudox opera con dos paletas paralelas. <strong>Presentaciones</strong> trabaja sobre un sistema verde extendido construido alrededor del verde institucional. <strong>Producto digital</strong> (web, app, UI) usa cyan y yellow eléctricos sobre dark. No se mezclan.</p>
+    </div>
+
+    <p class="palette-label">Paleta de presentaciones · primaria</p>
+    <div class="palette palette-presentations">
+
+      <div class="swatch chip-green">
+        <div class="chip"><span class="hex">#16B87A</span></div>
+        <div class="meta">
+          <div class="name">Green</div>
+          <div class="role">Color institucional · acento principal</div>
+          <dl>
+            <dt>RGB</dt><dd>22 · 184 · 122</dd>
+            <dt>Uso</dt><dd>Eyebrows, números de sección, callouts, líneas divisorias, footer pattern</dd>
+          </dl>
+        </div>
+      </div>
+
+      <div class="swatch chip-green-bright">
+        <div class="chip"><span class="hex">#38E08C</span></div>
+        <div class="meta">
+          <div class="name">Green Bright</div>
+          <div class="role">Acento de energía</div>
+          <dl>
+            <dt>RGB</dt><dd>56 · 224 · 140</dd>
+            <dt>Uso</dt><dd>Números de sección sobre dark, resaltes, datos brillantes</dd>
+          </dl>
+        </div>
+      </div>
+
+      <div class="swatch chip-yellow-green">
+        <div class="chip"><span class="hex">#B6E02A</span></div>
+        <div class="meta">
+          <div class="name">Yellow Green</div>
+          <div class="role">Acento del patrón</div>
+          <dl>
+            <dt>RGB</dt><dd>182 · 224 · 42</dd>
+            <dt>Uso</dt><dd>Puntos de textura en portadas, fragmentos del pattern</dd>
+          </dl>
+        </div>
+      </div>
+
+      <div class="swatch chip-dark-deep">
+        <div class="chip"><span class="hex">#06241B</span></div>
+        <div class="meta">
+          <div class="name">Dark Deep</div>
+          <div class="role">Fondo de portada</div>
+          <dl>
+            <dt>RGB</dt><dd>6 · 36 · 27</dd>
+            <dt>Uso</dt><dd>Base de portadas y closing slides</dd>
+          </dl>
+        </div>
+      </div>
+
+      <div class="swatch chip-dark">
+        <div class="chip"><span class="hex">#0D1512</span></div>
+        <div class="meta">
+          <div class="name">Dark</div>
+          <div class="role">Fondo de section dividers</div>
+          <dl>
+            <dt>RGB</dt><dd>13 · 21 · 18</dd>
+            <dt>Uso</dt><dd>Slides oscuras de separación de sección</dd>
+          </dl>
+        </div>
+      </div>
+
+      <div class="swatch chip-ink">
+        <div class="chip"><span class="hex">#1F2937</span></div>
+        <div class="meta">
+          <div class="name">Ink</div>
+          <div class="role">Texto principal</div>
+          <dl>
+            <dt>RGB</dt><dd>31 · 41 · 55</dd>
+            <dt>Uso</dt><dd>Cuerpo de body sobre claro</dd>
+          </dl>
+        </div>
+      </div>
+
+      <div class="swatch chip-ink-muted">
+        <div class="chip"><span class="hex">#5D6B63</span></div>
+        <div class="meta">
+          <div class="name">Ink Muted</div>
+          <div class="role">Texto terciario</div>
+          <dl>
+            <dt>RGB</dt><dd>93 · 107 · 99</dd>
+            <dt>Uso</dt><dd>Captions, eyebrows secundarios, notas al pie</dd>
+          </dl>
+        </div>
+      </div>
+
+      <div class="swatch chip-white">
+        <div class="chip"><span class="hex">#FFFFFF</span></div>
+        <div class="meta">
+          <div class="name">White</div>
+          <div class="role">Fondo principal de content slides</div>
+          <dl>
+            <dt>RGB</dt><dd>255 · 255 · 255</dd>
+            <dt>Uso</dt><dd>Default para 70% de los slides del deck</dd>
+          </dl>
+        </div>
+      </div>
+
+    </div>
+
+    <p class="palette-label palette-label--secondary">Paleta de producto digital · web · app · UI</p>
+    <div class="palette palette-digital">
+
+      <div class="swatch chip-cyan">
+        <div class="chip"><span class="hex">#00FFEF</span></div>
+        <div class="meta">
+          <div class="name">Cyan</div>
+          <div class="role">Acento principal digital</div>
+          <dl>
+            <dt>RGB</dt><dd>0 · 255 · 239</dd>
+            <dt>Uso</dt><dd>Sólo en producto digital — nunca en presentaciones</dd>
+          </dl>
+        </div>
+      </div>
+
+      <div class="swatch chip-yellow-electric">
+        <div class="chip"><span class="hex">#EAFF00</span></div>
+        <div class="meta">
+          <div class="name">Yellow</div>
+          <div class="role">Acento de energía digital</div>
+          <dl>
+            <dt>RGB</dt><dd>234 · 255 · 0</dd>
+            <dt>Uso</dt><dd>Sólo en producto digital</dd>
+          </dl>
+        </div>
+      </div>
+
+      <div class="swatch chip-dark-pure">
+        <div class="chip"><span class="hex">#070A0B</span></div>
+        <div class="meta">
+          <div class="name">Dark Pure</div>
+          <div class="role">Base de UI digital</div>
+          <dl>
+            <dt>RGB</dt><dd>7 · 10 · 11</dd>
+            <dt>Uso</dt><dd>Default UI oscura</dd>
+          </dl>
+        </div>
+      </div>
+
+    </div>
+
+    <div class="ratio">
+      <span class="label">Proporción típica en un slide</span>
+      <div class="bar">
+        <span class="b-bg">Fondo (blanco o dark) · 60–70%</span>
+        <span class="b-text">Texto · 20–25%</span>
+        <span class="b-accent">Acento verde · 10–15%</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ TYPOGRAPHY ============ -->
+  <section id="typography">
+    <div class="section-head">
+      <p class="eyebrow"><span class="num">02</span>Tipografía</p>
+      <h2>Carácter <em>editorial</em> + claridad funcional.</h2>
+      <p>Newsreader Semibold Italic aporta personalidad en titulares y frases de impacto. Manrope sostiene la lectura en cuerpo, etiquetas, datos y UI. La combinación equilibra autoría editorial y precisión funcional.</p>
+    </div>
+
+    <div class="typo-grid">
+      <div class="typo-card display">
+        <div class="label">Primaria · Display</div>
+        <div class="family">Newsreader</div>
+        <div class="role-tags">
+          <span class="role-tag">Semibold 600 · Italic</span>
+          <span class="role-tag">Regular 400 · Italic</span>
+        </div>
+        <div class="specimen">
+          <p>Construimos ecosistemas</p>
+          <p><em>de crecimiento.</em></p>
+        </div>
+        <div class="glyphs">
+          ABCDEFGHIJKLMNÑOPQRSTUVWXYZ<br>
+          abcdefghijklmnñopqrstuvwxyz<br>
+          0123456789 &amp; .,?!
+        </div>
+      </div>
+
+      <div class="typo-card body">
+        <div class="label">Secundaria · Body</div>
+        <div class="family">Manrope</div>
+        <div class="role-tags">
+          <span class="role-tag">Semibold 600</span>
+          <span class="role-tag">Bold 700</span>
+          <span class="role-tag">Extra Bold 800</span>
+        </div>
+        <div class="specimen">
+          <p><strong>Estructura, lectura y claridad.</strong></p>
+          <p>La data permite tomar mejores decisiones, leer el comportamiento de las audiencias y convertir el aprendizaje en ventaja competitiva.</p>
+        </div>
+        <div class="glyphs">
+          ABCDEFGHIJKLMNÑOPQRSTUVWXYZ<br>
+          abcdefghijklmnñopqrstuvwxyz<br>
+          0123456789 &amp; .,?!
+        </div>
+      </div>
+    </div>
+
+    <div class="scale">
+      <div class="scale-row">
+        <span class="role">H1 · Display</span>
+        <span class="sample serif" style="font-size: 64px;">Crecimiento con sistema</span>
+        <span class="spec">Newsreader Semibold Italic · 64</span>
+      </div>
+      <div class="scale-row">
+        <span class="role">H2 · Impacto</span>
+        <span class="sample serif-italic" style="font-size: 44px;">Una nueva etapa</span>
+        <span class="spec">Newsreader Semibold Italic · 44</span>
+      </div>
+      <div class="scale-row">
+        <span class="role">H3 · Subtítulo</span>
+        <span class="sample body-bold" style="font-size: 24px;">Conectamos áreas y decisiones</span>
+        <span class="spec">Manrope Bold · 24</span>
+      </div>
+      <div class="scale-row">
+        <span class="role">Body</span>
+        <span class="sample body-reg" style="font-size: 16px;">La estrategia define el rumbo, ordena prioridades y convierte objetivos en rutas claras de acción.</span>
+        <span class="spec">Manrope Regular · 16</span>
+      </div>
+      <div class="scale-row">
+        <span class="role">Label</span>
+        <span class="sample label">Growth Marketing Company</span>
+        <span class="spec">Manrope Semibold · 13 · 0.14em</span>
+      </div>
+      <div class="scale-row">
+        <span class="role">Dato</span>
+        <span class="sample body-eb" style="font-size: 56px; color: var(--ink);">+128%</span>
+        <span class="spec">Manrope Extra Bold · 56</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ LOGO ============ -->
+  <section id="logo">
+    <div class="section-head">
+      <p class="eyebrow"><span class="num">03</span>Logotipo</p>
+      <h2>El identificador principal de la marca.</h2>
+      <p>Versión horizontal con descriptor como firma primaria. El símbolo Q nace de un círculo con cola diagonal: geometría fija, no se redibuja, no se rota.</p>
+    </div>
+
+    <div class="logo-grid">
+      <div class="logo-stage">
+        <svg class="brand-logo" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1788.17 229.43" aria-label="Qudox · Growth Marketing Company">
+          <g>
+            <path d="M97.04.22C39.91.22,0,38.84,0,94.14,0,142.21,30.02,177.68,75.24,186.27v-40.79c-19.6-7.63-31.42-26.13-31.42-51.34,0-33.53,20.8-55.19,52.98-55.19s53.69,21.66,53.69,55.19-18.49,53.56-49.67,55.07h-3.15c-5.14-.03-7.88,6.04-4.48,9.89l61.39,69.47c1.54,1.74,4.41.65,4.41-1.67v-43.15c0-3.31-1.23-6.51-3.44-8.97l-1.91-2.13c25.31-16.26,40.68-44.16,40.68-78.51C194.32,38.84,154.32.22,97.04.22Z"/>
+            <path d="M652.67.32h-53.13c-8.12,0-14.69,6.58-14.69,14.69v171.69h67.82c62.9,0,96.56-34.43,96.56-93.19S715.58.32,652.67.32ZM653.71,145.8h-22.26V51.3c0-5.57,4.51-10.08,10.08-10.08h12.18c29.77,0,47.37,16.57,47.37,52.29s-16.83,52.29-47.37,52.29Z"/>
+            <g>
+              <path d="M357.38,110.86V1.95h-45.27v106.39c0,49.68,26.78,75.53,72.77,78.01v-40.74c-19.08-2.38-27.5-14.36-27.5-34.75Z"/>
+              <path d="M427.81,110.86c0,21.54-9.59,33.72-31.26,35.08l30.34,35.7c29.54-9.67,46.19-33.71,46.19-73.29V1.95h-45.27v108.91Z"/>
+            </g>
+            <polygon points="1169.59 .15 1111.63 .15 1167.72 88.33 1193.86 45.92 1169.59 .15"/>
+            <path d="M1027.37,91.41c-.02-.71-.02-1.43-.05-2.13C1025.32,36.77,988.66.45,936.74.21v37.25c28.1.34,50.98,23.41,50.98,51.59v9.8c0,28.38-23.22,51.6-51.6,51.6h0c-28.38,0-51.6-23.22-51.6-51.6v-9.8c0-20.44,12.05-38.2,29.39-46.54l-25.13-30.33c-24.05,13.7-39.96,38.32-43.29,69.34,0,.09-.02.17-.03.26-.12,1.16-.23,2.33-.31,3.51-.03.45-.06.9-.09,1.36-.06.95-.12,1.9-.15,2.85-.04,1.12-.06,2.24-.07,3.37,0,.33-.02.65-.02.98,0,.03,0,.07,0,.1,0,.04,0,.07,0,.11,0,.82.04,1.62.05,2.42.02.71.02,1.43.05,2.13,2.01,52.68,38.9,89.08,91.1,89.08s85.55-32.86,90.74-81.31c0-.09.02-.17.03-.26.12-1.16.23-2.33.31-3.51.03-.45.06-.9.09-1.36.06-.95.12-1.9.15-2.85.04-1.12.06-2.24.07-3.37,0-.33.02-.65.02-.98,0-.03,0-.07,0-.1,0-.04,0-.07,0-.11,0-.82-.04-1.62-.05-2.42Z"/>
+            <polygon points="1123.58 187.65 1170.49 187.65 1287.78 0 1236.17 0 1118.89 187.65 1123.58 187.65"/>
+            <polygon points="1239.11 187.65 1297.07 187.65 1240.98 99.47 1214.84 141.88 1239.11 187.65"/>
+          </g>
+          <rect x="1361.61" y="1.57" width="2.6" height="185.98"/>
+          <g>
+            <g>
+              <path d="M1458.4,53.51c-3.25,0-6.3-.58-9.15-1.73-2.85-1.15-5.35-2.84-7.5-5.07-2.15-2.23-3.83-4.97-5.04-8.21-1.21-3.24-1.81-6.96-1.81-11.14,0-5.48,1.02-10.17,3.07-14.07,2.04-3.89,4.85-6.88,8.4-8.96,3.56-2.08,7.56-3.12,12.03-3.12,6.18,0,11.08,1.44,14.69,4.31,3.61,2.87,6.06,6.9,7.34,12.08l-8.58,1.36c-.95-2.97-2.51-5.35-4.67-7.13-2.16-1.78-4.92-2.67-8.26-2.67-3.37-.05-6.17.69-8.4,2.2-2.23,1.51-3.91,3.64-5.04,6.38-1.13,2.74-1.69,5.95-1.69,9.62s.56,6.86,1.67,9.57c1.12,2.71,2.79,4.82,5.04,6.33,2.24,1.51,5.05,2.29,8.42,2.34,2.53.02,4.75-.44,6.66-1.38,1.91-.94,3.46-2.37,4.67-4.29,1.21-1.92,2.02-4.32,2.44-7.2h-8.85v-6.59h17.78c.05.37.08.92.1,1.64.02.72.03,1.15.03,1.29,0,4.74-.94,8.95-2.81,12.64-1.87,3.68-4.55,6.57-8.04,8.66-3.49,2.09-7.66,3.14-12.51,3.14Z"/>
+              <path d="M1488.72,52.46V14.81h7.43v9.17l-.91-1.19c.46-1.25,1.09-2.4,1.87-3.43.78-1.03,1.71-1.89,2.81-2.56.93-.63,1.96-1.12,3.09-1.48,1.13-.36,2.28-.58,3.47-.66,1.19-.08,2.34-.03,3.45.16v7.84c-1.12-.33-2.4-.43-3.85-.31-1.45.12-2.76.52-3.92,1.22-1.16.63-2.11,1.43-2.84,2.41-.73.98-1.27,2.09-1.62,3.33-.35,1.24-.52,2.59-.52,4.03v19.14h-8.44Z"/>
+              <path d="M1532.47,53.51c-3.76,0-7.05-.85-9.87-2.55-2.81-1.7-4.99-4.04-6.54-7.02-1.55-2.99-2.32-6.42-2.32-10.3s.79-7.41,2.37-10.39c1.58-2.97,3.78-5.3,6.59-6.97,2.81-1.67,6.07-2.51,9.76-2.51s7.09.85,9.9,2.54c2.81,1.7,5,4.04,6.55,7.02,1.56,2.99,2.34,6.42,2.34,10.3s-.78,7.35-2.35,10.34c-1.57,2.99-3.76,5.32-6.57,7.01-2.81,1.68-6.1,2.53-9.87,2.53ZM1532.47,45.63c3.35,0,5.83-1.12,7.46-3.35,1.63-2.23,2.44-5.11,2.44-8.65s-.83-6.56-2.48-8.73c-1.65-2.17-4.13-3.26-7.43-3.26-2.25,0-4.11.51-5.56,1.52-1.45,1.01-2.53,2.42-3.22,4.22-.7,1.8-1.05,3.89-1.05,6.26,0,3.65.83,6.56,2.49,8.73,1.66,2.17,4.11,3.26,7.34,3.26Z"/>
+              <path d="M1565.56,52.46l-11.5-37.72,8.23.07,7.36,24.16,7.46-24.16h7.08l7.43,24.16,7.39-24.16h8.23l-11.5,37.65h-6.55l-8.54-25.9-8.51,25.9h-6.55Z"/>
+              <path d="M1609.31,21.4v-6.59h26.25v6.59h-26.25ZM1635.56,52.46c-2.49.46-4.92.67-7.3.61-2.38-.06-4.51-.5-6.4-1.32s-3.31-2.13-4.29-3.92c-.86-1.63-1.31-3.29-1.36-4.98-.05-1.7-.07-3.61-.07-5.75V4.36h8.37v32.25c0,1.51.02,2.84.05,3.97.03,1.14.27,2.07.71,2.79.84,1.39,2.17,2.17,4.01,2.34,1.84.16,3.93.07,6.28-.28v7.04Z"/>
+              <path d="M1643.61,52.46V2.26h7.5v26.42h1.01v23.78h-8.51ZM1669.72,52.46v-18.13c0-1.19-.08-2.5-.24-3.94-.16-1.44-.54-2.83-1.13-4.17-.59-1.34-1.48-2.43-2.65-3.29-1.17-.86-2.76-1.29-4.76-1.29-1.07,0-2.13.17-3.17.52s-1.99.95-2.84,1.8c-.85.85-1.53,2.01-2.04,3.49-.51,1.48-.77,3.36-.77,5.66l-4.99-2.13c0-3.21.62-6.11,1.87-8.72,1.24-2.6,3.07-4.68,5.49-6.22,2.42-1.55,5.39-2.32,8.92-2.32,2.79,0,5.09.47,6.9,1.39,1.81.93,3.25,2.12,4.32,3.56,1.07,1.44,1.86,2.98,2.37,4.6.51,1.63.84,3.17.99,4.62.15,1.45.23,2.63.23,3.54v21.02h-8.51Z"/>
+            </g>
+            <g>
+              <path d="M1452.39,79.27l-10.88,29.91c-1.39,3.84-.35,4.88,4.95,5.09l-1.19,3.56h-17.01l1.12-3.56c4.81-.21,6.34-1.39,7.67-5.16l11.71-31.58c1.26-3.42.49-4.74-4.25-5.02l1.12-3.49h14.57l2.86,37.16,25.31-37.16h15.83l-1.19,3.49c-4.67.28-6.48,1.32-7.67,5.16l-9.27,31.51c-1.12,3.7-.42,4.88,4.25,5.09l-1.12,3.56h-20.85l1.12-3.56c5.16-.21,6.69-1.53,7.81-5.23l8.72-29.35-26.49,38.98h-4.18l-2.93-39.39Z"/>
+              <path d="M1527.9,110.71c0,.77.35,1.05.98,1.05,1.74,0,4.04-2.16,6.48-5.02l2.37,1.88c-3.97,5.72-10.95,9.97-15.2,9.97-2.16,0-3.63-1.32-3.63-3.35,0-1.32.56-3.07,1.88-5.93l6.83-14.92h-1.32c-9.48,17.5-16.52,24.47-22.52,24.47-4.32,0-7.25-3.49-7.25-9.27,0-13.25,15.2-29.42,28.87-29.42,1.95,0,3.63.35,5.09.91l1.12-2.51h8.23l-11.3,29.91c-.42,1.05-.63,1.81-.63,2.23ZM1507.05,112.52c3.07,0,8.58-5.65,14.22-14.57,2.44-3.77,5.3-8.79,6.41-11.43-1.05-1.81-2.65-2.72-4.74-2.72-7.95,0-18.48,13.6-18.48,24.05,0,3,.84,4.67,2.58,4.67Z"/>
+              <path d="M1552.23,87.07c0-.7-.42-1.05-1.05-1.05-1.26,0-3.9,1.88-6.55,5.02l-2.37-1.88c4.04-5.72,11.16-9.97,15.76-9.97,2.16,0,3.56.98,3.56,3.07,0,1.46-.56,3.35-2.09,6.48l-7.32,14.71h1.26c4.67-8.65,7.74-13.94,11.23-17.99,3.56-4.04,6.83-6.34,10.18-6.34,3.7,0,5.65,2.51,5.65,5.09s-1.81,5.23-4.74,5.23c-1.95,0-2.72-.84-3.63-1.67-.84-.7-1.19-1.19-2.23-1.19-1.32,0-2.93,1.05-5.02,3.49-4.74,5.58-9.48,14.85-11.85,19.59l-4.11,8.16h-8.85l11.57-28.59c.42-1.05.63-1.74.63-2.16Z"/>
+              <path d="M1586.81,77.17c0-1.6-1.26-2.3-4.04-2.58l1.19-3.28,11.36-3.76h2.93l-6.69,17.85c-2.58,6.83-4.74,11.64-7.25,18.06h1.39c3.9-8.92,7.88-15.41,13.67-19.87,3.77-3,7.95-4.46,11.57-4.46,4.32,0,6.9,2.3,6.9,5.72,0,5.37-6.76,10.88-18.62,14.78.56,3.69,1.32,6.41,2.16,8.51,1.33,3.28,2.51,4.53,4.18,4.53,1.46,0,2.79-.84,4.95-3.97l2.51,1.6c-3.42,6-6.07,8.58-9.83,8.58-4.04,0-6.34-2.23-8.3-7.53-.84-2.37-1.81-5.58-2.58-9.69l-3.49.77-1.39,3.28-4.67,12.13h-9.06l12.69-38.49c.35-1.05.42-1.81.42-2.16ZM1602.5,95.02c3.97-2.16,6.28-4.95,6.28-7.25,0-1.81-1.12-2.72-3-2.72-5.16,0-10.95,5.37-15.62,14.5,4.88-1.12,8.92-2.72,12.34-4.53Z"/>
+              <path d="M1618.19,105.34c0-7.67,3.56-14.71,8.65-19.59,4.25-4.25,9.76-6.62,15.06-6.62s9.27,2.65,9.27,6.9c0,3.35-2.37,7.53-7.32,10.39-3.97,2.37-9.9,4.25-17.64,4.6l-.07,1.88c0,5.79,2.51,8.79,6.83,8.79,3.42,0,6.83-2.16,10.04-8.3l3.28.84c-3.7,9.76-10.04,14.64-16.38,14.64-7.04,0-11.71-5.23-11.71-13.53ZM1631.23,97.11c6.69,0,12.41-5.86,12.41-10.95,0-2.02-1.19-3.42-3.49-3.42-3.14,0-6.76,2.37-9.34,5.86-1.67,2.3-2.93,4.95-3.7,7.6,1.32.7,2.72.91,4.11.91Z"/>
+              <path d="M1651.65,115.45c0-1.19.35-2.58,1.12-4.46l10.46-25.87h-7.25l1.19-3.63c6.41-1.95,11.43-5.37,15.34-9.9h3.63l-3.42,8.58h11.99l-1.53,4.95h-12.41l-9.41,23.5c-.42.98-.56,1.81-.56,2.09,0,.77.42,1.12,1.12,1.12,2.02,0,6.55-3.76,10.95-8.78l2.44,2.09c-5.37,6.69-14.08,13.74-19.87,13.74-2.72,0-3.77-1.39-3.77-3.42Z"/>
+              <path d="M1680.73,115.73c0-1.25.28-2.79,1.05-4.6l8.99-21.75c.49-1.05.63-1.81.63-2.3s-.28-.98-.91-.98c-1.6,0-4.04,2.09-6.41,4.95l-2.3-1.95c3.56-5.23,10.53-9.9,15.13-9.9,2.37,0,3.76,1.19,3.76,3.07,0,1.19-.42,2.72-1.19,4.6l-8.99,21.82c-.35.84-.63,1.6-.63,2.23s.35.98.91.98c1.74,0,4.11-2.09,6.48-4.88l2.37,1.88c-3.63,5.23-10.6,9.97-15.13,9.97-2.44,0-3.76-1.26-3.76-3.14ZM1694.18,70.55c0-3,2.44-5.37,5.58-5.37s5.51,2.3,5.51,5.37c0,3.28-2.37,5.65-5.51,5.65s-5.58-2.37-5.58-5.65Z"/>
+              <path d="M1726.33,115.66c0-1.12.35-2.65,1.12-4.46l7.53-18.34c.63-1.53.98-2.79.98-3.9,0-1.53-.63-2.65-2.16-2.65s-3.35,1.12-5.72,3.97c-5.02,5.93-10.11,14.99-12.34,19.38l-4.11,8.16h-8.44l10.6-28.73c.28-.84.49-1.6.49-2.09,0-.7-.35-.98-.91-.98-1.46,0-4.25,2.02-6.83,5.02l-2.23-1.88c4.04-5.72,11.23-9.97,15.76-9.97,2.09,0,3.49.98,3.49,3.07,0,1.46-.63,3.35-2.02,6.55l-6.62,14.64h1.25c2.79-4.95,7.11-12.76,11.92-17.99,3.63-4.04,7.46-6.27,11.09-6.27,3.9,0,5.93,2.37,5.93,5.65,0,1.19-.28,2.44-.91,3.97l-8.16,19.94c-.42,1.05-.63,1.74-.63,2.23,0,.56.35.91.91.91,1.74,0,4.32-2.23,6.62-4.88l2.23,1.88c-3.56,5.16-10.53,9.9-15.06,9.9-2.51,0-3.77-1.19-3.77-3.14Z"/>
+              <path d="M1741.59,124.52c0-3.42,4.53-6.62,13.39-9.62-1.46-1.05-2.16-2.23-2.16-3.49,0-1.74,1.74-3.42,5.51-5.23-4.81-.91-7.53-4.25-7.53-9.34,0-1.39.21-2.65.7-4.18,2.58-7.67,10.67-13.46,18.96-13.46,1.95,0,3.7.35,5.16.98h12.55l-1.6,4.95h-6.28c.35.98.49,2.09.49,3.28,0,1.6-.28,3.28-.91,4.88-2.79,7.32-10.25,12.83-18.2,13.11-1.25.84-1.74,1.46-1.74,2.09,0,.91,1.05,1.74,3.28,2.72l8.72,3.76c4.46,1.88,6.55,4.11,6.55,6.76,0,5.3-9.06,9.55-20.71,9.55-9.9,0-16.18-2.65-16.18-6.76ZM1759.58,127.65c6.48,0,11.02-1.67,11.02-3.9,0-1.19-1.32-2.3-4.46-3.63l-8.3-3.63h-.07c-5.37,1.81-8.65,4.46-8.65,6.83,0,2.65,3.97,4.32,10.46,4.32ZM1771.51,92.86c.98-2.37,1.53-4.67,1.53-6.41,0-2.51-1.05-3.83-3-3.83-3.42,0-7.46,4.04-9.97,9.9-1.12,2.51-1.6,4.6-1.6,6.34,0,2.58,1.05,4.04,3.07,4.04,3.35,0,7.6-4.25,9.97-10.04Z"/>
+            </g>
+            <g>
+              <path d="M1458.92,186.68c-5.02,0-9.32-1.1-12.9-3.29-3.58-2.2-6.33-5.26-8.25-9.19-1.92-3.93-2.88-8.48-2.88-13.67s.96-9.74,2.88-13.67c1.92-3.93,4.67-6.99,8.25-9.19,3.58-2.2,7.88-3.29,12.9-3.29,5.79,0,10.61,1.45,14.47,4.34,3.86,2.89,6.57,6.79,8.12,11.7l-8.47,2.34c-.98-3.28-2.64-5.84-4.98-7.69-2.35-1.85-5.39-2.77-9.13-2.77-3.37,0-6.18.76-8.42,2.27-2.24,1.51-3.93,3.63-5.05,6.36-1.13,2.73-1.7,5.93-1.73,9.6,0,3.67.56,6.87,1.69,9.6,1.13,2.73,2.82,4.85,5.07,6.36,2.25,1.51,5.07,2.27,8.44,2.27,3.74,0,6.79-.93,9.13-2.79,2.35-1.86,4.01-4.41,4.98-7.67l8.47,2.34c-1.56,4.9-4.26,8.8-8.12,11.7-3.86,2.89-8.68,4.34-14.47,4.34Z"/>
+              <path d="M1505.81,186.68c-3.77,0-7.05-.85-9.87-2.55-2.81-1.7-4.99-4.04-6.54-7.02-1.55-2.99-2.32-6.42-2.32-10.3s.79-7.41,2.37-10.39c1.58-2.97,3.78-5.3,6.59-6.97,2.81-1.67,6.07-2.51,9.76-2.51s7.09.85,9.9,2.54c2.81,1.7,5,4.04,6.55,7.02,1.56,2.99,2.34,6.42,2.34,10.3s-.78,7.35-2.35,10.34c-1.57,2.99-3.76,5.32-6.57,7.01-2.81,1.68-6.1,2.53-9.87,2.53ZM1505.81,178.8c3.35,0,5.83-1.12,7.46-3.35,1.63-2.23,2.44-5.11,2.44-8.65s-.83-6.56-2.48-8.73c-1.65-2.17-4.13-3.26-7.42-3.26-2.25,0-4.11.51-5.56,1.52-1.45,1.01-2.53,2.42-3.22,4.22-.7,1.8-1.05,3.89-1.05,6.26,0,3.65.83,6.56,2.49,8.73,1.66,2.17,4.11,3.26,7.34,3.26Z"/>
+              <path d="M1532.2,185.63v-37.65h7.43v11.68h1.05v25.97h-8.47ZM1554.89,185.63v-22.76c0-2.63-.64-4.67-1.92-6.14-1.28-1.46-3.02-2.2-5.23-2.2s-3.85.73-5.14,2.2c-1.29,1.46-1.93,3.37-1.93,5.72l-3.76-2.51c0-2.44.6-4.64,1.81-6.59,1.21-1.95,2.84-3.49,4.9-4.62,2.06-1.13,4.36-1.69,6.92-1.69,2.81,0,5.16.6,7.06,1.8,1.89,1.2,3.31,2.82,4.25,4.88.94,2.06,1.41,4.37,1.41,6.96v24.96h-8.37ZM1577.48,185.63v-22.87c0-2.58-.64-4.6-1.92-6.05-1.28-1.45-3.01-2.18-5.19-2.18-1.35,0-2.56.31-3.63.92-1.07.62-1.92,1.52-2.54,2.72-.63,1.2-.94,2.62-.94,4.27l-3.73-2.2c-.02-2.6.56-4.9,1.76-6.88,1.2-1.99,2.82-3.54,4.86-4.65,2.04-1.12,4.32-1.67,6.83-1.67,4.16,0,7.35,1.25,9.57,3.75,2.22,2.5,3.33,5.78,3.33,9.85v25h-8.4Z"/>
+              <path d="M1594.88,202.37v-54.38h7.43v26.42h1.05v27.96h-8.47ZM1613.04,186.68c-3.67,0-6.75-.87-9.24-2.61-2.49-1.74-4.36-4.12-5.61-7.13-1.25-3.01-1.88-6.38-1.88-10.13s.63-7.18,1.88-10.18c1.25-3,3.1-5.36,5.53-7.09,2.43-1.73,5.43-2.6,9.01-2.6s6.64.87,9.26,2.6,4.64,4.09,6.08,7.08c1.44,2.99,2.16,6.39,2.16,10.2s-.71,7.15-2.13,10.14c-1.42,3-3.42,5.37-6,7.11s-5.6,2.61-9.06,2.61ZM1611.75,179.15c2.18,0,3.99-.55,5.4-1.64,1.42-1.09,2.47-2.57,3.16-4.44.68-1.87,1.03-3.96,1.03-6.26s-.35-4.35-1.05-6.22c-.7-1.87-1.78-3.36-3.24-4.46-1.46-1.1-3.32-1.66-5.58-1.66s-3.88.52-5.23,1.55c-1.35,1.03-2.34,2.48-2.98,4.32-.64,1.85-.96,4-.96,6.47s.32,4.59.96,6.45c.64,1.86,1.65,3.31,3.03,4.34,1.38,1.03,3.2,1.55,5.46,1.55Z"/>
+              <path d="M1648.42,186.68c-2.72,0-5.02-.52-6.9-1.55-1.88-1.03-3.31-2.41-4.27-4.13-.96-1.72-1.45-3.61-1.45-5.68,0-1.81.3-3.44.91-4.9.6-1.45,1.53-2.71,2.79-3.77,1.25-1.06,2.88-1.92,4.88-2.6,1.51-.49,3.28-.93,5.32-1.32,2.03-.39,4.24-.76,6.62-1.1,2.38-.34,4.87-.7,7.48-1.1l-3,1.71c.02-2.6-.56-4.52-1.74-5.75-1.19-1.23-3.18-1.85-6-1.85-1.7,0-3.33.4-4.92,1.19-1.58.79-2.68,2.15-3.31,4.08l-7.67-2.41c.93-3.18,2.7-5.74,5.32-7.67,2.61-1.93,6.14-2.89,10.58-2.89,3.35,0,6.29.55,8.84,1.64,2.55,1.09,4.43,2.88,5.66,5.37.67,1.32,1.08,2.68,1.22,4.06.14,1.38.21,2.89.21,4.51v23.11h-7.36v-8.16l1.22,1.32c-1.7,2.72-3.68,4.71-5.94,5.98s-5.1,1.9-8.49,1.9ZM1650.09,179.99c1.91,0,3.53-.34,4.88-1.01s2.42-1.5,3.22-2.48c.8-.98,1.34-1.89,1.62-2.75.44-1.07.69-2.29.75-3.68.06-1.38.09-2.5.09-3.36l2.58.77c-2.53.4-4.71.74-6.52,1.05-1.81.3-3.37.59-4.67.85-1.3.27-2.45.56-3.45.89-.98.35-1.8.76-2.48,1.22-.67.47-1.19,1-1.55,1.6-.36.6-.54,1.31-.54,2.13,0,.93.23,1.75.7,2.46.47.71,1.14,1.27,2.04,1.69.89.42,2,.63,3.33.63Z"/>
+              <path d="M1677.98,185.63v-37.65h7.5v11.68h1.01v25.97h-8.51ZM1704.09,185.63v-18.13c0-1.19-.08-2.5-.24-3.94-.16-1.44-.54-2.83-1.13-4.17s-1.48-2.43-2.65-3.29c-1.17-.86-2.76-1.29-4.76-1.29-1.07,0-2.13.17-3.17.52s-1.99.95-2.84,1.8-1.53,2.01-2.04,3.49c-.51,1.48-.77,3.36-.77,5.66l-4.98-2.13c0-3.21.62-6.11,1.87-8.72,1.24-2.6,3.07-4.68,5.49-6.22,2.42-1.55,5.39-2.32,8.92-2.32,2.79,0,5.09.47,6.9,1.39,1.81.93,3.25,2.12,4.32,3.56,1.07,1.44,1.86,2.98,2.37,4.6.51,1.63.84,3.17.99,4.62.15,1.45.23,2.63.23,3.54v21.02h-8.51Z"/>
+              <path d="M1725.22,202.37l7.25-19.91.14,5.86-16.42-40.33h8.75l11.64,29.84h-2.23l11.33-29.84h8.4l-20.99,54.38h-7.88Z"/>
+            </g>
+          </g>
+        </svg>
+        <div class="caption">Positiva · sobre fondo claro</div>
+      </div>
+      <div class="logo-stage dark">
+        <svg class="brand-logo" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1788.17 229.43" aria-label="Qudox · Growth Marketing Company">
+          <g>
+            <path d="M97.04.22C39.91.22,0,38.84,0,94.14,0,142.21,30.02,177.68,75.24,186.27v-40.79c-19.6-7.63-31.42-26.13-31.42-51.34,0-33.53,20.8-55.19,52.98-55.19s53.69,21.66,53.69,55.19-18.49,53.56-49.67,55.07h-3.15c-5.14-.03-7.88,6.04-4.48,9.89l61.39,69.47c1.54,1.74,4.41.65,4.41-1.67v-43.15c0-3.31-1.23-6.51-3.44-8.97l-1.91-2.13c25.31-16.26,40.68-44.16,40.68-78.51C194.32,38.84,154.32.22,97.04.22Z"/>
+            <path d="M652.67.32h-53.13c-8.12,0-14.69,6.58-14.69,14.69v171.69h67.82c62.9,0,96.56-34.43,96.56-93.19S715.58.32,652.67.32ZM653.71,145.8h-22.26V51.3c0-5.57,4.51-10.08,10.08-10.08h12.18c29.77,0,47.37,16.57,47.37,52.29s-16.83,52.29-47.37,52.29Z"/>
+            <g>
+              <path d="M357.38,110.86V1.95h-45.27v106.39c0,49.68,26.78,75.53,72.77,78.01v-40.74c-19.08-2.38-27.5-14.36-27.5-34.75Z"/>
+              <path d="M427.81,110.86c0,21.54-9.59,33.72-31.26,35.08l30.34,35.7c29.54-9.67,46.19-33.71,46.19-73.29V1.95h-45.27v108.91Z"/>
+            </g>
+            <polygon points="1169.59 .15 1111.63 .15 1167.72 88.33 1193.86 45.92 1169.59 .15"/>
+            <path d="M1027.37,91.41c-.02-.71-.02-1.43-.05-2.13C1025.32,36.77,988.66.45,936.74.21v37.25c28.1.34,50.98,23.41,50.98,51.59v9.8c0,28.38-23.22,51.6-51.6,51.6h0c-28.38,0-51.6-23.22-51.6-51.6v-9.8c0-20.44,12.05-38.2,29.39-46.54l-25.13-30.33c-24.05,13.7-39.96,38.32-43.29,69.34,0,.09-.02.17-.03.26-.12,1.16-.23,2.33-.31,3.51-.03.45-.06.9-.09,1.36-.06.95-.12,1.9-.15,2.85-.04,1.12-.06,2.24-.07,3.37,0,.33-.02.65-.02.98,0,.03,0,.07,0,.1,0,.04,0,.07,0,.11,0,.82.04,1.62.05,2.42.02.71.02,1.43.05,2.13,2.01,52.68,38.9,89.08,91.1,89.08s85.55-32.86,90.74-81.31c0-.09.02-.17.03-.26.12-1.16.23-2.33.31-3.51.03-.45.06-.9.09-1.36.06-.95.12-1.9.15-2.85.04-1.12.06-2.24.07-3.37,0-.33.02-.65.02-.98,0-.03,0-.07,0-.1,0-.04,0-.07,0-.11,0-.82-.04-1.62-.05-2.42Z"/>
+            <polygon points="1123.58 187.65 1170.49 187.65 1287.78 0 1236.17 0 1118.89 187.65 1123.58 187.65"/>
+            <polygon points="1239.11 187.65 1297.07 187.65 1240.98 99.47 1214.84 141.88 1239.11 187.65"/>
+          </g>
+          <rect x="1361.61" y="1.57" width="2.6" height="185.98"/>
+          <g>
+            <g>
+              <path d="M1458.4,53.51c-3.25,0-6.3-.58-9.15-1.73-2.85-1.15-5.35-2.84-7.5-5.07-2.15-2.23-3.83-4.97-5.04-8.21-1.21-3.24-1.81-6.96-1.81-11.14,0-5.48,1.02-10.17,3.07-14.07,2.04-3.89,4.85-6.88,8.4-8.96,3.56-2.08,7.56-3.12,12.03-3.12,6.18,0,11.08,1.44,14.69,4.31,3.61,2.87,6.06,6.9,7.34,12.08l-8.58,1.36c-.95-2.97-2.51-5.35-4.67-7.13-2.16-1.78-4.92-2.67-8.26-2.67-3.37-.05-6.17.69-8.4,2.2-2.23,1.51-3.91,3.64-5.04,6.38-1.13,2.74-1.69,5.95-1.69,9.62s.56,6.86,1.67,9.57c1.12,2.71,2.79,4.82,5.04,6.33,2.24,1.51,5.05,2.29,8.42,2.34,2.53.02,4.75-.44,6.66-1.38,1.91-.94,3.46-2.37,4.67-4.29,1.21-1.92,2.02-4.32,2.44-7.2h-8.85v-6.59h17.78c.05.37.08.92.1,1.64.02.72.03,1.15.03,1.29,0,4.74-.94,8.95-2.81,12.64-1.87,3.68-4.55,6.57-8.04,8.66-3.49,2.09-7.66,3.14-12.51,3.14Z"/>
+              <path d="M1488.72,52.46V14.81h7.43v9.17l-.91-1.19c.46-1.25,1.09-2.4,1.87-3.43.78-1.03,1.71-1.89,2.81-2.56.93-.63,1.96-1.12,3.09-1.48,1.13-.36,2.28-.58,3.47-.66,1.19-.08,2.34-.03,3.45.16v7.84c-1.12-.33-2.4-.43-3.85-.31-1.45.12-2.76.52-3.92,1.22-1.16.63-2.11,1.43-2.84,2.41-.73.98-1.27,2.09-1.62,3.33-.35,1.24-.52,2.59-.52,4.03v19.14h-8.44Z"/>
+              <path d="M1532.47,53.51c-3.76,0-7.05-.85-9.87-2.55-2.81-1.7-4.99-4.04-6.54-7.02-1.55-2.99-2.32-6.42-2.32-10.3s.79-7.41,2.37-10.39c1.58-2.97,3.78-5.3,6.59-6.97,2.81-1.67,6.07-2.51,9.76-2.51s7.09.85,9.9,2.54c2.81,1.7,5,4.04,6.55,7.02,1.56,2.99,2.34,6.42,2.34,10.3s-.78,7.35-2.35,10.34c-1.57,2.99-3.76,5.32-6.57,7.01-2.81,1.68-6.1,2.53-9.87,2.53ZM1532.47,45.63c3.35,0,5.83-1.12,7.46-3.35,1.63-2.23,2.44-5.11,2.44-8.65s-.83-6.56-2.48-8.73c-1.65-2.17-4.13-3.26-7.43-3.26-2.25,0-4.11.51-5.56,1.52-1.45,1.01-2.53,2.42-3.22,4.22-.7,1.8-1.05,3.89-1.05,6.26,0,3.65.83,6.56,2.49,8.73,1.66,2.17,4.11,3.26,7.34,3.26Z"/>
+              <path d="M1565.56,52.46l-11.5-37.72,8.23.07,7.36,24.16,7.46-24.16h7.08l7.43,24.16,7.39-24.16h8.23l-11.5,37.65h-6.55l-8.54-25.9-8.51,25.9h-6.55Z"/>
+              <path d="M1609.31,21.4v-6.59h26.25v6.59h-26.25ZM1635.56,52.46c-2.49.46-4.92.67-7.3.61-2.38-.06-4.51-.5-6.4-1.32s-3.31-2.13-4.29-3.92c-.86-1.63-1.31-3.29-1.36-4.98-.05-1.7-.07-3.61-.07-5.75V4.36h8.37v32.25c0,1.51.02,2.84.05,3.97.03,1.14.27,2.07.71,2.79.84,1.39,2.17,2.17,4.01,2.34,1.84.16,3.93.07,6.28-.28v7.04Z"/>
+              <path d="M1643.61,52.46V2.26h7.5v26.42h1.01v23.78h-8.51ZM1669.72,52.46v-18.13c0-1.19-.08-2.5-.24-3.94-.16-1.44-.54-2.83-1.13-4.17-.59-1.34-1.48-2.43-2.65-3.29-1.17-.86-2.76-1.29-4.76-1.29-1.07,0-2.13.17-3.17.52s-1.99.95-2.84,1.8c-.85.85-1.53,2.01-2.04,3.49-.51,1.48-.77,3.36-.77,5.66l-4.99-2.13c0-3.21.62-6.11,1.87-8.72,1.24-2.6,3.07-4.68,5.49-6.22,2.42-1.55,5.39-2.32,8.92-2.32,2.79,0,5.09.47,6.9,1.39,1.81.93,3.25,2.12,4.32,3.56,1.07,1.44,1.86,2.98,2.37,4.6.51,1.63.84,3.17.99,4.62.15,1.45.23,2.63.23,3.54v21.02h-8.51Z"/>
+            </g>
+            <g>
+              <path d="M1452.39,79.27l-10.88,29.91c-1.39,3.84-.35,4.88,4.95,5.09l-1.19,3.56h-17.01l1.12-3.56c4.81-.21,6.34-1.39,7.67-5.16l11.71-31.58c1.26-3.42.49-4.74-4.25-5.02l1.12-3.49h14.57l2.86,37.16,25.31-37.16h15.83l-1.19,3.49c-4.67.28-6.48,1.32-7.67,5.16l-9.27,31.51c-1.12,3.7-.42,4.88,4.25,5.09l-1.12,3.56h-20.85l1.12-3.56c5.16-.21,6.69-1.53,7.81-5.23l8.72-29.35-26.49,38.98h-4.18l-2.93-39.39Z"/>
+              <path d="M1527.9,110.71c0,.77.35,1.05.98,1.05,1.74,0,4.04-2.16,6.48-5.02l2.37,1.88c-3.97,5.72-10.95,9.97-15.2,9.97-2.16,0-3.63-1.32-3.63-3.35,0-1.32.56-3.07,1.88-5.93l6.83-14.92h-1.32c-9.48,17.5-16.52,24.47-22.52,24.47-4.32,0-7.25-3.49-7.25-9.27,0-13.25,15.2-29.42,28.87-29.42,1.95,0,3.63.35,5.09.91l1.12-2.51h8.23l-11.3,29.91c-.42,1.05-.63,1.81-.63,2.23ZM1507.05,112.52c3.07,0,8.58-5.65,14.22-14.57,2.44-3.77,5.3-8.79,6.41-11.43-1.05-1.81-2.65-2.72-4.74-2.72-7.95,0-18.48,13.6-18.48,24.05,0,3,.84,4.67,2.58,4.67Z"/>
+              <path d="M1552.23,87.07c0-.7-.42-1.05-1.05-1.05-1.26,0-3.9,1.88-6.55,5.02l-2.37-1.88c4.04-5.72,11.16-9.97,15.76-9.97,2.16,0,3.56.98,3.56,3.07,0,1.46-.56,3.35-2.09,6.48l-7.32,14.71h1.26c4.67-8.65,7.74-13.94,11.23-17.99,3.56-4.04,6.83-6.34,10.18-6.34,3.7,0,5.65,2.51,5.65,5.09s-1.81,5.23-4.74,5.23c-1.95,0-2.72-.84-3.63-1.67-.84-.7-1.19-1.19-2.23-1.19-1.32,0-2.93,1.05-5.02,3.49-4.74,5.58-9.48,14.85-11.85,19.59l-4.11,8.16h-8.85l11.57-28.59c.42-1.05.63-1.74.63-2.16Z"/>
+              <path d="M1586.81,77.17c0-1.6-1.26-2.3-4.04-2.58l1.19-3.28,11.36-3.76h2.93l-6.69,17.85c-2.58,6.83-4.74,11.64-7.25,18.06h1.39c3.9-8.92,7.88-15.41,13.67-19.87,3.77-3,7.95-4.46,11.57-4.46,4.32,0,6.9,2.3,6.9,5.72,0,5.37-6.76,10.88-18.62,14.78.56,3.69,1.32,6.41,2.16,8.51,1.33,3.28,2.51,4.53,4.18,4.53,1.46,0,2.79-.84,4.95-3.97l2.51,1.6c-3.42,6-6.07,8.58-9.83,8.58-4.04,0-6.34-2.23-8.3-7.53-.84-2.37-1.81-5.58-2.58-9.69l-3.49.77-1.39,3.28-4.67,12.13h-9.06l12.69-38.49c.35-1.05.42-1.81.42-2.16ZM1602.5,95.02c3.97-2.16,6.28-4.95,6.28-7.25,0-1.81-1.12-2.72-3-2.72-5.16,0-10.95,5.37-15.62,14.5,4.88-1.12,8.92-2.72,12.34-4.53Z"/>
+              <path d="M1618.19,105.34c0-7.67,3.56-14.71,8.65-19.59,4.25-4.25,9.76-6.62,15.06-6.62s9.27,2.65,9.27,6.9c0,3.35-2.37,7.53-7.32,10.39-3.97,2.37-9.9,4.25-17.64,4.6l-.07,1.88c0,5.79,2.51,8.79,6.83,8.79,3.42,0,6.83-2.16,10.04-8.3l3.28.84c-3.7,9.76-10.04,14.64-16.38,14.64-7.04,0-11.71-5.23-11.71-13.53ZM1631.23,97.11c6.69,0,12.41-5.86,12.41-10.95,0-2.02-1.19-3.42-3.49-3.42-3.14,0-6.76,2.37-9.34,5.86-1.67,2.3-2.93,4.95-3.7,7.6,1.32.7,2.72.91,4.11.91Z"/>
+              <path d="M1651.65,115.45c0-1.19.35-2.58,1.12-4.46l10.46-25.87h-7.25l1.19-3.63c6.41-1.95,11.43-5.37,15.34-9.9h3.63l-3.42,8.58h11.99l-1.53,4.95h-12.41l-9.41,23.5c-.42.98-.56,1.81-.56,2.09,0,.77.42,1.12,1.12,1.12,2.02,0,6.55-3.76,10.95-8.78l2.44,2.09c-5.37,6.69-14.08,13.74-19.87,13.74-2.72,0-3.77-1.39-3.77-3.42Z"/>
+              <path d="M1680.73,115.73c0-1.25.28-2.79,1.05-4.6l8.99-21.75c.49-1.05.63-1.81.63-2.3s-.28-.98-.91-.98c-1.6,0-4.04,2.09-6.41,4.95l-2.3-1.95c3.56-5.23,10.53-9.9,15.13-9.9,2.37,0,3.76,1.19,3.76,3.07,0,1.19-.42,2.72-1.19,4.6l-8.99,21.82c-.35.84-.63,1.6-.63,2.23s.35.98.91.98c1.74,0,4.11-2.09,6.48-4.88l2.37,1.88c-3.63,5.23-10.6,9.97-15.13,9.97-2.44,0-3.76-1.26-3.76-3.14ZM1694.18,70.55c0-3,2.44-5.37,5.58-5.37s5.51,2.3,5.51,5.37c0,3.28-2.37,5.65-5.51,5.65s-5.58-2.37-5.58-5.65Z"/>
+              <path d="M1726.33,115.66c0-1.12.35-2.65,1.12-4.46l7.53-18.34c.63-1.53.98-2.79.98-3.9,0-1.53-.63-2.65-2.16-2.65s-3.35,1.12-5.72,3.97c-5.02,5.93-10.11,14.99-12.34,19.38l-4.11,8.16h-8.44l10.6-28.73c.28-.84.49-1.6.49-2.09,0-.7-.35-.98-.91-.98-1.46,0-4.25,2.02-6.83,5.02l-2.23-1.88c4.04-5.72,11.23-9.97,15.76-9.97,2.09,0,3.49.98,3.49,3.07,0,1.46-.63,3.35-2.02,6.55l-6.62,14.64h1.25c2.79-4.95,7.11-12.76,11.92-17.99,3.63-4.04,7.46-6.27,11.09-6.27,3.9,0,5.93,2.37,5.93,5.65,0,1.19-.28,2.44-.91,3.97l-8.16,19.94c-.42,1.05-.63,1.74-.63,2.23,0,.56.35.91.91.91,1.74,0,4.32-2.23,6.62-4.88l2.23,1.88c-3.56,5.16-10.53,9.9-15.06,9.9-2.51,0-3.77-1.19-3.77-3.14Z"/>
+              <path d="M1741.59,124.52c0-3.42,4.53-6.62,13.39-9.62-1.46-1.05-2.16-2.23-2.16-3.49,0-1.74,1.74-3.42,5.51-5.23-4.81-.91-7.53-4.25-7.53-9.34,0-1.39.21-2.65.7-4.18,2.58-7.67,10.67-13.46,18.96-13.46,1.95,0,3.7.35,5.16.98h12.55l-1.6,4.95h-6.28c.35.98.49,2.09.49,3.28,0,1.6-.28,3.28-.91,4.88-2.79,7.32-10.25,12.83-18.2,13.11-1.25.84-1.74,1.46-1.74,2.09,0,.91,1.05,1.74,3.28,2.72l8.72,3.76c4.46,1.88,6.55,4.11,6.55,6.76,0,5.3-9.06,9.55-20.71,9.55-9.9,0-16.18-2.65-16.18-6.76ZM1759.58,127.65c6.48,0,11.02-1.67,11.02-3.9,0-1.19-1.32-2.3-4.46-3.63l-8.3-3.63h-.07c-5.37,1.81-8.65,4.46-8.65,6.83,0,2.65,3.97,4.32,10.46,4.32ZM1771.51,92.86c.98-2.37,1.53-4.67,1.53-6.41,0-2.51-1.05-3.83-3-3.83-3.42,0-7.46,4.04-9.97,9.9-1.12,2.51-1.6,4.6-1.6,6.34,0,2.58,1.05,4.04,3.07,4.04,3.35,0,7.6-4.25,9.97-10.04Z"/>
+            </g>
+            <g>
+              <path d="M1458.92,186.68c-5.02,0-9.32-1.1-12.9-3.29-3.58-2.2-6.33-5.26-8.25-9.19-1.92-3.93-2.88-8.48-2.88-13.67s.96-9.74,2.88-13.67c1.92-3.93,4.67-6.99,8.25-9.19,3.58-2.2,7.88-3.29,12.9-3.29,5.79,0,10.61,1.45,14.47,4.34,3.86,2.89,6.57,6.79,8.12,11.7l-8.47,2.34c-.98-3.28-2.64-5.84-4.98-7.69-2.35-1.85-5.39-2.77-9.13-2.77-3.37,0-6.18.76-8.42,2.27-2.24,1.51-3.93,3.63-5.05,6.36-1.13,2.73-1.7,5.93-1.73,9.6,0,3.67.56,6.87,1.69,9.6,1.13,2.73,2.82,4.85,5.07,6.36,2.25,1.51,5.07,2.27,8.44,2.27,3.74,0,6.79-.93,9.13-2.79,2.35-1.86,4.01-4.41,4.98-7.67l8.47,2.34c-1.56,4.9-4.26,8.8-8.12,11.7-3.86,2.89-8.68,4.34-14.47,4.34Z"/>
+              <path d="M1505.81,186.68c-3.77,0-7.05-.85-9.87-2.55-2.81-1.7-4.99-4.04-6.54-7.02-1.55-2.99-2.32-6.42-2.32-10.3s.79-7.41,2.37-10.39c1.58-2.97,3.78-5.3,6.59-6.97,2.81-1.67,6.07-2.51,9.76-2.51s7.09.85,9.9,2.54c2.81,1.7,5,4.04,6.55,7.02,1.56,2.99,2.34,6.42,2.34,10.3s-.78,7.35-2.35,10.34c-1.57,2.99-3.76,5.32-6.57,7.01-2.81,1.68-6.1,2.53-9.87,2.53ZM1505.81,178.8c3.35,0,5.83-1.12,7.46-3.35,1.63-2.23,2.44-5.11,2.44-8.65s-.83-6.56-2.48-8.73c-1.65-2.17-4.13-3.26-7.42-3.26-2.25,0-4.11.51-5.56,1.52-1.45,1.01-2.53,2.42-3.22,4.22-.7,1.8-1.05,3.89-1.05,6.26,0,3.65.83,6.56,2.49,8.73,1.66,2.17,4.11,3.26,7.34,3.26Z"/>
+              <path d="M1532.2,185.63v-37.65h7.43v11.68h1.05v25.97h-8.47ZM1554.89,185.63v-22.76c0-2.63-.64-4.67-1.92-6.14-1.28-1.46-3.02-2.2-5.23-2.2s-3.85.73-5.14,2.2c-1.29,1.46-1.93,3.37-1.93,5.72l-3.76-2.51c0-2.44.6-4.64,1.81-6.59,1.21-1.95,2.84-3.49,4.9-4.62,2.06-1.13,4.36-1.69,6.92-1.69,2.81,0,5.16.6,7.06,1.8,1.89,1.2,3.31,2.82,4.25,4.88.94,2.06,1.41,4.37,1.41,6.96v24.96h-8.37ZM1577.48,185.63v-22.87c0-2.58-.64-4.6-1.92-6.05-1.28-1.45-3.01-2.18-5.19-2.18-1.35,0-2.56.31-3.63.92-1.07.62-1.92,1.52-2.54,2.72-.63,1.2-.94,2.62-.94,4.27l-3.73-2.2c-.02-2.6.56-4.9,1.76-6.88,1.2-1.99,2.82-3.54,4.86-4.65,2.04-1.12,4.32-1.67,6.83-1.67,4.16,0,7.35,1.25,9.57,3.75,2.22,2.5,3.33,5.78,3.33,9.85v25h-8.4Z"/>
+              <path d="M1594.88,202.37v-54.38h7.43v26.42h1.05v27.96h-8.47ZM1613.04,186.68c-3.67,0-6.75-.87-9.24-2.61-2.49-1.74-4.36-4.12-5.61-7.13-1.25-3.01-1.88-6.38-1.88-10.13s.63-7.18,1.88-10.18c1.25-3,3.1-5.36,5.53-7.09,2.43-1.73,5.43-2.6,9.01-2.6s6.64.87,9.26,2.6,4.64,4.09,6.08,7.08c1.44,2.99,2.16,6.39,2.16,10.2s-.71,7.15-2.13,10.14c-1.42,3-3.42,5.37-6,7.11s-5.6,2.61-9.06,2.61ZM1611.75,179.15c2.18,0,3.99-.55,5.4-1.64,1.42-1.09,2.47-2.57,3.16-4.44.68-1.87,1.03-3.96,1.03-6.26s-.35-4.35-1.05-6.22c-.7-1.87-1.78-3.36-3.24-4.46-1.46-1.1-3.32-1.66-5.58-1.66s-3.88.52-5.23,1.55c-1.35,1.03-2.34,2.48-2.98,4.32-.64,1.85-.96,4-.96,6.47s.32,4.59.96,6.45c.64,1.86,1.65,3.31,3.03,4.34,1.38,1.03,3.2,1.55,5.46,1.55Z"/>
+              <path d="M1648.42,186.68c-2.72,0-5.02-.52-6.9-1.55-1.88-1.03-3.31-2.41-4.27-4.13-.96-1.72-1.45-3.61-1.45-5.68,0-1.81.3-3.44.91-4.9.6-1.45,1.53-2.71,2.79-3.77,1.25-1.06,2.88-1.92,4.88-2.6,1.51-.49,3.28-.93,5.32-1.32,2.03-.39,4.24-.76,6.62-1.1,2.38-.34,4.87-.7,7.48-1.1l-3,1.71c.02-2.6-.56-4.52-1.74-5.75-1.19-1.23-3.18-1.85-6-1.85-1.7,0-3.33.4-4.92,1.19-1.58.79-2.68,2.15-3.31,4.08l-7.67-2.41c.93-3.18,2.7-5.74,5.32-7.67,2.61-1.93,6.14-2.89,10.58-2.89,3.35,0,6.29.55,8.84,1.64,2.55,1.09,4.43,2.88,5.66,5.37.67,1.32,1.08,2.68,1.22,4.06.14,1.38.21,2.89.21,4.51v23.11h-7.36v-8.16l1.22,1.32c-1.7,2.72-3.68,4.71-5.94,5.98s-5.1,1.9-8.49,1.9ZM1650.09,179.99c1.91,0,3.53-.34,4.88-1.01s2.42-1.5,3.22-2.48c.8-.98,1.34-1.89,1.62-2.75.44-1.07.69-2.29.75-3.68.06-1.38.09-2.5.09-3.36l2.58.77c-2.53.4-4.71.74-6.52,1.05-1.81.3-3.37.59-4.67.85-1.3.27-2.45.56-3.45.89-.98.35-1.8.76-2.48,1.22-.67.47-1.19,1-1.55,1.6-.36.6-.54,1.31-.54,2.13,0,.93.23,1.75.7,2.46.47.71,1.14,1.27,2.04,1.69.89.42,2,.63,3.33.63Z"/>
+              <path d="M1677.98,185.63v-37.65h7.5v11.68h1.01v25.97h-8.51ZM1704.09,185.63v-18.13c0-1.19-.08-2.5-.24-3.94-.16-1.44-.54-2.83-1.13-4.17s-1.48-2.43-2.65-3.29c-1.17-.86-2.76-1.29-4.76-1.29-1.07,0-2.13.17-3.17.52s-1.99.95-2.84,1.8-1.53,2.01-2.04,3.49c-.51,1.48-.77,3.36-.77,5.66l-4.98-2.13c0-3.21.62-6.11,1.87-8.72,1.24-2.6,3.07-4.68,5.49-6.22,2.42-1.55,5.39-2.32,8.92-2.32,2.79,0,5.09.47,6.9,1.39,1.81.93,3.25,2.12,4.32,3.56,1.07,1.44,1.86,2.98,2.37,4.6.51,1.63.84,3.17.99,4.62.15,1.45.23,2.63.23,3.54v21.02h-8.51Z"/>
+              <path d="M1725.22,202.37l7.25-19.91.14,5.86-16.42-40.33h8.75l11.64,29.84h-2.23l11.33-29.84h8.4l-20.99,54.38h-7.88Z"/>
+            </g>
+          </g>
+        </svg>
+        <div class="caption">Negativa · sobre fondo oscuro</div>
+      </div>
+    </div>
+
+    <ul class="specs-list" style="margin-top: 48px;">
+      <li><span class="k">Proporción horizontal con descriptor</span><span class="v">7.8 X · 1 X · divisor 0.5 X</span></li>
+      <li><span class="k">Proporción sin descriptor</span><span class="v">5.65 X · 1 X</span></li>
+      <li><span class="k">Proporción vertical con descriptor</span><span class="v">3.9 X · 1 X · centrado</span></li>
+      <li><span class="k">Símbolo Q · ratio</span><span class="v">1 : 1.18 · circunferencia base</span></li>
+      <li><span class="k">Área de respeto</span><span class="v">1 X en los cuatro lados</span></li>
+      <li><span class="k">Tamaño mínimo · desktop</span><span class="v">240 px</span></li>
+      <li><span class="k">Tamaño mínimo · mobile</span><span class="v">140 px</span></li>
+      <li><span class="k">Favicon · solo Q</span><span class="v">16 px</span></li>
+    </ul>
+  </section>
+
+  <!-- ============ PRESENTATION SYSTEM ============ -->
+  <section id="presentations">
+    <div class="section-head">
+      <p class="eyebrow"><span class="num">04</span>Sistema de presentaciones</p>
+      <h2>Siete tipos de slide. <em>Una sola voz.</em></h2>
+      <p>Todo deck de Qudox se construye combinando estos arquetipos. Cada uno tiene una función narrativa específica y reglas de maquetado fijas — para que cualquier agente de IA pueda producir slides consistentes sin improvisar.</p>
+    </div>
+
+    <div class="slides-grid">
+
+      <!-- Cover -->
+      <figure class="slide-card">
+        <div class="slide-mini slide-mini--cover">
+          <div class="cover-bg"></div>
+          <div class="cover-content">
+            <div class="cover-logo">QUDOX</div>
+            <div class="cover-title">Fase 2 — Believe&nbsp;It</div>
+            <div class="cover-sub">Estrategia de Marca · Insights, Buyer Personas y Brand Voice.</div>
+          </div>
+        </div>
+        <figcaption>
+          <span class="slide-tag">01 · cover</span>
+          <span class="slide-name">Portada</span>
+          <p>Dark + textura verde. Newsreader Italic 88–96pt. Logo QUDOX arriba, subtítulo Manrope debajo del título.</p>
+        </figcaption>
+      </figure>
+
+      <!-- TOC -->
+      <figure class="slide-card">
+        <div class="slide-mini slide-mini--toc">
+          <div class="toc-eyebrow">CONTENIDO DE LA PRESENTACIÓN</div>
+          <div class="toc-title">Lo que veremos en esta fase</div>
+          <div class="toc-items">
+            <div class="toc-item">
+              <span class="toc-num">01</span>
+              <div><div class="toc-h">Insights de Marca</div><div class="toc-p">6 hallazgos estratégicos</div></div>
+            </div>
+            <div class="toc-item">
+              <span class="toc-num">02</span>
+              <div><div class="toc-h">Buyer Personas</div><div class="toc-p">3 perfiles de cliente</div></div>
+            </div>
+            <div class="toc-item">
+              <span class="toc-num">03</span>
+              <div><div class="toc-h">Brand Ladder</div><div class="toc-p">De atributos a esencia</div></div>
+            </div>
+            <div class="toc-item">
+              <span class="toc-num">04</span>
+              <div><div class="toc-h">Brand Voice</div><div class="toc-p">Tono y palabras clave</div></div>
+            </div>
+          </div>
+          <div class="slide-footer-band"></div>
+        </div>
+        <figcaption>
+          <span class="slide-tag">02 · toc</span>
+          <span class="slide-name">Índice</span>
+          <p>White bg. Eyebrow + título Newsreader Italic. Grid 2 columnas con números verdes Newsreader Italic. Footer con patrón.</p>
+        </figcaption>
+      </figure>
+
+      <!-- Section divider -->
+      <figure class="slide-card">
+        <div class="slide-mini slide-mini--divider">
+          <div class="divider-num">01</div>
+          <div class="divider-title">Insights de Marca</div>
+          <div class="divider-sub">Los 6 hallazgos estratégicos que fundamentan el posicionamiento de Motocity.</div>
+          <div class="divider-lines"></div>
+          <div class="divider-logo">QUDOX</div>
+        </div>
+        <figcaption>
+          <span class="slide-tag">03 · section-divider</span>
+          <span class="slide-name">Separador de sección</span>
+          <p>Dark bg. Número grande verde brillante + título Newsreader Italic blanco. Líneas finas decorativas al pie.</p>
+        </figcaption>
+      </figure>
+
+      <!-- Content 2col -->
+      <figure class="slide-card">
+        <div class="slide-mini slide-mini--content">
+          <div class="content-eyebrow">INSIGHTS DE MARCA</div>
+          <div class="content-title">Hallazgos que ordenan la decisión</div>
+          <div class="content-rule"></div>
+          <div class="content-body">
+            <div class="content-col">
+              <div class="content-sub-eyebrow">INSIGHT 1</div>
+              <div class="content-h">La gente no solo busca una moto, busca una decisión segura.</div>
+              <div class="content-p">Comprar una moto implica una inversión importante y una decisión que impacta su movilidad.</div>
+              <div class="content-callout">
+                <strong>Implicación para Motocity.</strong> Posicionarse como el retailer experto.
+              </div>
+            </div>
+            <div class="content-img"></div>
+          </div>
+          <div class="slide-footer-band"></div>
+        </div>
+        <figcaption>
+          <span class="slide-tag">04 · content-2col</span>
+          <span class="slide-name">Contenido principal</span>
+          <p>White bg. Eyebrow + Newsreader Italic title. Body en columnas (texto + imagen). Callout con borde verde. Footer con patrón.</p>
+        </figcaption>
+      </figure>
+
+      <!-- Data callout -->
+      <figure class="slide-card">
+        <div class="slide-mini slide-mini--data">
+          <div class="data-eyebrow">RESULTADO TIPO</div>
+          <div class="data-big">+128%</div>
+          <div class="data-caption">Crecimiento en conversión en 6 meses de ecosistema activo.</div>
+        </div>
+        <figcaption>
+          <span class="slide-tag">05 · data-callout</span>
+          <span class="slide-name">Dato destacado</span>
+          <p>Dark bg. Número gigante Manrope Extra Bold verde brillante. Eyebrow arriba y caption Manrope debajo.</p>
+        </figcaption>
+      </figure>
+
+      <!-- Closing -->
+      <figure class="slide-card">
+        <div class="slide-mini slide-mini--closing">
+          <div class="cover-bg"></div>
+          <div class="closing-content">
+            <div class="closing-title">Movilidad con respaldo experto.</div>
+            <div class="closing-meta">FASE 2 — BELIEVE IT</div>
+            <div class="closing-bullets">Insights · Buyer Personas · Brand Ladder · Propuesta de Valor</div>
+            <div class="cover-logo" style="margin-top: 6px;">QUDOX</div>
+          </div>
+        </div>
+        <figcaption>
+          <span class="slide-tag">06 · closing</span>
+          <span class="slide-name">Cierre</span>
+          <p>Dark + textura verde. Frase corta Newsreader Italic centrada. Conecta el deck con crecimiento.</p>
+        </figcaption>
+      </figure>
+
+    </div>
+  </section>
+
+  <!-- ============ VOICE ============ -->
+  <section id="voice">
+    <div class="section-head">
+      <p class="eyebrow"><span class="num">05</span>Voz &amp; tono</p>
+      <h2>Claridad estratégica, seguridad corporativa, <em>sensibilidad creativa</em> y visión tecnológica.</h2>
+      <p>El tono proyecta experiencia, pensamiento estructurado y capacidad de ejecución — sin sonar rígido, exagerado o artificial.</p>
+    </div>
+
+    <div class="voice-grid">
+      <div class="voice-col yes">
+        <div class="vc-label">✓ Sí somos</div>
+        <ul>
+          <li>Estratégicos y orientados a negocio</li>
+          <li>Claros y estructurados</li>
+          <li>Creativos con propósito</li>
+          <li>Tecnológicos y AI First</li>
+          <li>Consultivos y accionables</li>
+          <li>Cercanos con criterio profesional</li>
+          <li>Seguros y fundamentados</li>
+          <li>Dinámicos y adaptables</li>
+        </ul>
+      </div>
+      <div class="voice-col no">
+        <div class="vc-label">✕ No somos</div>
+        <ul>
+          <li>Genéricos o decorativos</li>
+          <li>Confusos o improvisados</li>
+          <li>Creativos solo por estética</li>
+          <li>Técnicos sin bajarlo a valor</li>
+          <li>Teóricos sin aplicación</li>
+          <li>Excesivamente informales</li>
+          <li>Prometedores sin sustento</li>
+          <li>Rígidos o desconectados del cambio</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="vocab">
+      <div class="v-label">Territorio verbal</div>
+      <p class="words">
+        <span>Crecimiento</span><span>Ecosistema</span><span>Sistema</span><span>Estrategia</span><span>Performance</span><span>Data</span><span>Brandformance</span><span>Creatividad</span><span>Contenido</span><span>Tecnología</span><span>IA</span><span>Medios</span><span>Optimización</span><span>Comunidad</span><span>Audiencias</span><span>Insights</span><span>Conversión</span><span>Medición</span><span>Escala</span><span>Mejora&nbsp;continua</span>
+      </p>
+    </div>
+  </section>
+
+  <!-- ============ DO / DON'T ============ -->
+  <section id="dos-donts">
+    <div class="section-head">
+      <p class="eyebrow"><span class="num">06</span>Do's &amp; Don'ts</p>
+      <h2>Las reglas que sostienen la consistencia.</h2>
+    </div>
+
+    <div class="dd-grid">
+      <div class="dd-card do">
+        <div class="dd-label">✓ Sí hacer</div>
+        <ul>
+          <li><span class="m">01</span><span>Empezar cada deck con <em>cover → toc → section-divider → content</em>.</span></li>
+          <li><span class="m">02</span><span>Cada sección abre con un divider numerado en verde brillante.</span></li>
+          <li><span class="m">03</span><span>Newsreader <em>siempre</em> en Semibold Italic para titulares de marca.</span></li>
+          <li><span class="m">04</span><span>Manrope sostiene el 80%+ del texto: body, eyebrows, datos, labels.</span></li>
+          <li><span class="m">05</span><span>Verde es el color institucional de presentaciones (no cyan, no yellow).</span></li>
+          <li><span class="m">06</span><span>Footer con banda de patrón verde en todo slide claro de contenido.</span></li>
+          <li><span class="m">07</span><span>Callouts con borde izquierdo verde grueso para resaltar implicaciones.</span></li>
+          <li><span class="m">08</span><span>Ritmo alternando slides claras y oscuras; cierre conectado a crecimiento.</span></li>
+        </ul>
+      </div>
+
+      <div class="dd-card dont">
+        <div class="dd-label">✕ No hacer</div>
+        <ul>
+          <li><span class="m">01</span><span>Usar cyan #00FFEF ni yellow #EAFF00 puro en presentaciones (son del producto digital).</span></li>
+          <li><span class="m">02</span><span>Usar Newsreader sin italic, o cambiarlo de peso semibold.</span></li>
+          <li><span class="m">03</span><span>Meter Calibri, Aptos, Arial decorativa ni ninguna fuente fuera del sistema.</span></li>
+          <li><span class="m">04</span><span>Saturar slides con patrón (footer sí, fondo completo no).</span></li>
+          <li><span class="m">05</span><span>Párrafos de más de 6 líneas — partir en dos slides.</span></li>
+          <li><span class="m">06</span><span>Crear slides 100% texto — siempre un visual.</span></li>
+          <li><span class="m">07</span><span>Centrar el body — solo se centran títulos de cover/closing.</span></li>
+          <li><span class="m">08</span><span>Convertir <em>QX Growth System</em> en marca pública o tratarlo como logo.</span></li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<footer>
+  <div class="footer-inner">
+    <span class="brand">qudox — design system v2.0</span>
+    <span>Brandbook + decks de referencia · 2026-06-18</span>
+  </div>
+</footer>
+
+</body>
+</html>
