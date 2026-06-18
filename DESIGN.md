@@ -1,536 +1,428 @@
 # DESIGN.md — Qudox
 
-> Sistema de diseño de Qudox para uso por agentes de IA (Claude Code, Cursor, Copilot, v0, etc.) y desarrolladores. Este archivo es la fuente de verdad para colores, tipografía, componentes y estilo de marca. Si algo no está aquí, no se inventa: se consulta el Brandbook completo.
+> Sistema de marca de **Qudox** para generación de presentaciones (PPTX) por agentes de IA. Este archivo es la fuente de verdad. Si vas a producir un deck para Qudox o sus clientes, **leelo entero antes de generar el primer slide** y respetalo al pie de la letra. Si una decisión visual no está aquí, NO la inventes: preguntá.
 
 ---
 
-## 1. Identidad de marca
+## 1. Identidad
 
-**Nombre:** Qudox
-**Descriptor oficial:** Growth Marketing Company
-**Posicionamiento:** Growth Marketing Company **AI First** con visión regional (Centroamérica y Latinoamérica).
-**Tagline / cierre narrativo:** *Together, We Power Growth.* (ES: *Juntos potenciamos el crecimiento.*)
-
-**Qué construye Qudox:** ecosistemas de crecimiento integrados que conectan estrategia, creatividad, data, medios, tecnología, IA y operación bajo una misma visión.
-
-**Marca principal y arquitectura:**
-- `Qudox` — marca principal (estratégica, corporativa, metodológica).
-- `QX Growth System` — **narrativa interna de metodología**, NO es una marca pública, NO se usa como logo independiente, NO reemplaza a Qudox.
-- Submarcas especializadas (todas firman *by Qudox*):
-  - **Hype** — influencers.
-  - **Blink** — videos cortos.
-  - **State of Digital** — investigación y eventos.
+- **Marca:** Qudox — Growth Marketing Company AI First.
+- **Tono:** estratégico, tecnológico, corporativo, creativo, consultivo, claro, dinámico, confiable.
+- **Tagline de cierre:** *Together, we power growth.* (ES: *Juntos potenciamos el crecimiento.*)
+- **Lo que entregamos:** ecosistemas de crecimiento que conectan estrategia, creatividad, data, medios, tecnología e IA.
 
 ---
 
-## 2. Principios de diseño
+## 2. Sistema de color — paleta de presentaciones
 
-Estos principios guían cualquier decisión visual y de producto:
+Las presentaciones de Qudox **usan un sistema verde extendido**, no la paleta cyan/yellow del producto digital. El verde es el lenguaje cromático de las presentaciones; cyan/yellow se reservan para producto.
 
-1. **Claridad antes que complejidad.**
-2. **Estrategia antes que decoración.**
-3. **Evidencia antes que promesa vacía.**
-4. **Creatividad con propósito.**
-5. **Tecnología aplicada, no presumida.**
-6. **Cercanía profesional.**
-7. **Mensajes accionables y medibles.**
+### 2.1 Tokens principales
 
-Personalidad de marca: **estratégica, tecnológica, corporativa, creativa, consultiva, clara, dinámica, confiable**.
+```
+PRIMARIO
+qx-green             #16B87A   verde Qudox · color institucional de presentaciones
+qx-green-bright      #38E08C   verde brillante · acento de energía y resaltes
+qx-yellow-green      #B6E02A   verde-amarillo · acentos puntuales del patrón
+qx-yellow-green-soft #C5D83A   verde-amarillo apagado · variante del patrón
 
----
+OSCUROS (fondos)
+qx-dark              #0D1512   fondo principal de slides oscuras
+qx-dark-deep         #06241B   verde muy oscuro · fondo de portada
+qx-dark-forest       #1F4035   verde oscuro forest · capas de portada/cierre
+qx-dark-mid          #26322C   verde grisáceo oscuro · paneles, separadores
+qx-dark-warm         #2C3832   neutro oscuro · variante de fondo
 
-## 3. Sistema de color
-
-### 3.1 Paleta base
-
-| Token            | HEX        | RGB                  | CMYK             | Rol                                                      |
-| ---------------- | ---------- | -------------------- | ---------------- | -------------------------------------------------------- |
-| `color-dark`     | `#070A0B`  | `7, 10, 11`          | `36, 9, 0, 96`   | Base de profundidad. Fondo principal del sistema.        |
-| `color-white`    | `#FFFFFF`  | `255, 255, 255`      | `0, 0, 0, 0`     | Espacio de lectura. Fondo claro.                         |
-| `color-cyan`     | `#00FFEF`  | `0, 255, 239`        | `60, 0, 22, 0`   | **Acento principal**. Foco, energía tecnológica.         |
-| `color-yellow`   | `#EAFF00`  | `234, 255, 0`        | `8, 0, 100, 0`   | Acento de energía. Segundo acento, énfasis puntuales.    |
-| `color-green`    | `#16B87A`  | `22, 184, 122`       | `88, 0, 34, 28`  | Resalte terciario. **SOLO presentaciones**, sobre dark.  |
-
-### 3.2 Reglas de uso del color
-
-- **Dark + White sostienen ~75%** del sistema (50% dark + 25% white). Estructura y lectura.
-- **Cyan ~15%** — acento principal para foco y énfasis.
-- **Yellow + degradado ~10%** — gestos de mayor energía.
-- ❌ **Cyan y Yellow NUNCA se usan como fondo sólido de página.** Solo como acento sobre dark, blanco o textura.
-- ❌ **Green nunca va sobre blanco**, no es fondo, no reemplaza cyan ni yellow. Reservado a resaltes de datos en slides sobre fondo dark.
-- ✅ Contraste alto siempre. Si el contraste no permite leer, hay que cambiar el fondo.
-
-### 3.3 Degradado de marca
-
-Va de `cyan → yellow` en sentido **lineal o diagonal**. Es el gesto más expresivo del sistema.
-
-- ✅ Usar en superficies, separadores y líneas.
-- ❌ **Nunca** sobre texto.
-- ❌ **Nunca** como relleno del logo.
-
-```css
-background: linear-gradient(135deg, #00FFEF 0%, #EAFF00 100%);
+NEUTROS
+qx-ink               #1F2937   texto principal sobre claro
+qx-ink-soft          #3A463F   texto secundario sobre claro
+qx-ink-muted         #5D6B63   texto terciario / captions
+qx-white             #FFFFFF   blanco · fondo principal de slides claras
+qx-paper             #E5E5DD   crema apagado · fondos muy puntuales
+qx-tint-green        #E7F3EC   verde clarísimo · tints de superficie
 ```
 
-### 3.4 Tokens CSS
+### 2.2 Reglas de aplicación
 
-```css
-:root {
-  /* Base */
-  --color-dark: #070A0B;
-  --color-white: #FFFFFF;
+- **Slides claras (mayoría del deck):** fondo `#FFFFFF`, texto principal `#1F2937` o `#0D1512`, eyebrow y resaltes en `qx-green #16B87A`.
+- **Slides oscuras (portadas, separadores, cierres):** fondo `#0D1512` o `#06241B`, texto principal `#FFFFFF`, números y acentos en `qx-green-bright #38E08C`.
+- **Cyan `#00FFEF` y Yellow `#EAFF00` no se usan en presentaciones de Qudox.** Aparecen sólo en producto digital (web/app/UI). Si Claude duda, **elige verde**.
+- **Rojos / colores externos:** únicamente cuando el cliente o el dato lo exigen (ej. mostrar paletas de marcas competidoras en un benchmark). Nunca como acento institucional.
 
-  /* Acentos */
-  --color-cyan: #00FFEF;
-  --color-yellow: #EAFF00;
-  --color-green: #16B87A; /* solo presentaciones */
+### 2.3 Proporción típica en un slide
 
-  /* Degradado */
-  --gradient-brand: linear-gradient(135deg, #00FFEF 0%, #EAFF00 100%);
-
-  /* Semánticos (UI digital — extrapolado para producto) */
-  --bg-default: var(--color-dark);
-  --bg-surface: #0E1314;          /* dark un paso más arriba */
-  --bg-elevated: #161B1D;
-  --bg-inverse: var(--color-white);
-
-  --text-primary: var(--color-white);
-  --text-secondary: rgba(255, 255, 255, 0.72);
-  --text-muted: rgba(255, 255, 255, 0.56);
-  --text-on-light: var(--color-dark);
-
-  --accent-primary: var(--color-cyan);
-  --accent-secondary: var(--color-yellow);
-  --accent-success: var(--color-green);
-
-  --border-subtle: rgba(255, 255, 255, 0.08);
-  --border-default: rgba(255, 255, 255, 0.16);
-  --border-strong: rgba(255, 255, 255, 0.32);
-}
-```
-
-### 3.5 Tailwind config
-
-```js
-// tailwind.config.js
-module.exports = {
-  theme: {
-    extend: {
-      colors: {
-        qx: {
-          dark:   '#070A0B',
-          white:  '#FFFFFF',
-          cyan:   '#00FFEF',
-          yellow: '#EAFF00',
-          green:  '#16B87A',
-        },
-      },
-      backgroundImage: {
-        'qx-gradient': 'linear-gradient(135deg, #00FFEF 0%, #EAFF00 100%)',
-      },
-    },
-  },
-};
-```
+- 60–70% fondo (blanco o dark) + estructura.
+- 20–25% texto.
+- 10–15% acento verde (eyebrow, números, resaltes, callouts, patrón de footer).
 
 ---
 
-## 4. Tipografía
+## 3. Tipografía
 
-### 4.1 Familias
+Dos familias, sin excepción.
 
-| Token              | Familia          | Uso                                                                 |
-| ------------------ | ---------------- | ------------------------------------------------------------------- |
-| `font-display`     | **Newsreader**    | Titulares, frases de impacto, énfasis editoriales, momentos de marca. **Estilo dominante: Semibold (600) Italic.** |
-| `font-body`        | **Manrope**       | Cuerpo, subtítulos, etiquetas, bullets, tablas, captions, UI.       |
+### 3.1 Familias y pesos
 
-**Pesos / estilos disponibles:**
-- Newsreader: `Semibold 600 Italic` (estilo primario de marca), `Regular 400 Italic` (énfasis secundario). Se puede cargar la familia variable completa (opsz 6–72, wght 400–700, italic) desde Google Fonts.
-- Manrope: `Regular (400)`, `Medium (500)`, `Semibold (600)`, `Bold (700)`, `Extra Bold (800)`.
+| Familia              | Estilo dominante       | Uso                                                       |
+| -------------------- | ---------------------- | --------------------------------------------------------- |
+| **Newsreader**       | **SemiBold (600) Italic** | Display: títulos de portada, separadores, títulos editoriales y números grandes. Es la firma de marca. |
+| **Manrope**          | Regular / Medium / **Bold (700)** | Todo lo demás: eyebrows, subtítulos, body, labels, captions, datos, tablas. |
 
-**Carga (Google Fonts):**
+Carga (si renderizás web/HTML adjunto):
 
 ```html
-<link href="https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,400..700;1,6..72,400..700&family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Newsreader:ital,wght@1,600&family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
 ```
 
-### 4.2 Jerarquía de texto
+### 3.2 Escala (puntos) — basada en los decks reales
 
-| Rol                  | Familia          | Peso / estilo                                  |
-| -------------------- | ---------------- | ---------------------------------------------- |
-| Título principal     | Newsreader       | **Semibold 600 Italic** (default de marca)     |
-| Frase de impacto     | Newsreader       | Semibold 600 Italic                            |
-| Subtítulo            | Manrope          | Bold (700) o Semibold (600)                    |
-| Cuerpo               | Manrope          | Regular (400) o Medium (500)                   |
-| Etiqueta / overline  | Manrope          | Semibold en MAYÚSCULAS o small caps           |
-| Dato destacado       | Manrope          | Extra Bold (800)                               |
+| Rol                                        | Familia                  | Tamaño    |
+| ------------------------------------------ | ------------------------ | --------- |
+| Título de portada                          | Newsreader SemiBold Italic | **88–96 pt** |
+| Título de separador de sección             | Newsreader SemiBold Italic | **60–72 pt** |
+| Número de sección (01, 02…)                | Newsreader SemiBold Italic | **54–60 pt**, color `qx-green-bright` |
+| Título principal de slide de contenido     | Newsreader SemiBold Italic | **37–44 pt** |
+| Slide de cierre / frase de impacto         | Newsreader SemiBold Italic | **40–54 pt** |
+| Subtítulo grande de body                   | Manrope Bold             | **24–30 pt** |
+| Subtítulo / item de TOC                    | Manrope Bold             | **20–24 pt** |
+| Body                                       | Manrope Regular          | **17–19 pt** |
+| Eyebrow / overline (MAYÚSCULAS)            | Manrope Bold             | **12–14 pt**, tracking `0.12em` |
+| Labels de tablas / captions                | Manrope Bold             | **13–16 pt** |
+| Caption / nota al pie                      | Manrope Regular          | **11–13 pt**, color `qx-ink-muted` |
 
-### 4.3 Reglas de combinación
+### 3.3 Reglas tipográficas
 
-- **Newsreader Italic aporta carácter editorial**; Manrope sostiene **lectura, estructura y precisión**.
-- El italic semibold es la firma de marca en titulares — no se intercambia por la versión upright sin razón.
-- Truco editorial: dentro de un título italic, una palabra en **upright** (estilo normal) crea un punto de énfasis distinto sin cambiar de peso. Ej.: *Together, we* **power** *growth.*
-- Patrones válidos: título Newsreader italic + cuerpo Manrope / palabra Newsreader dentro de frase Manrope / dato Manrope con énfasis Newsreader.
-- ❌ No usar tipografías externas sin criterio.
+- **Newsreader siempre va en italic.** Nunca upright. Es la firma visual de Qudox.
+- **Newsreader es el momento editorial, no el default.** Una o dos veces por slide como máximo (típicamente sólo el título). El resto es Manrope.
+- **Truco editorial admitido:** dentro de un título en italic, una palabra en **upright** (Newsreader normal) crea énfasis sin cambiar de peso. Ej.: *Together, we* **power** *growth*. Usar con criterio, no en cada slide.
+- **Eyebrows en mayúsculas** con tracking amplio (~`0.12em`), color `qx-green #16B87A` sobre claro o `qx-green-bright` sobre oscuro.
+- **Nunca usar tipografías externas** (ni Calibri, ni Aptos, ni Arial decorativa). Si una se cuela en una tabla generada automáticamente, reemplazarla por Manrope.
+- **Italic en Manrope = prohibido para texto largo.** Si necesitás énfasis, usá Manrope Bold o cambiá a Newsreader Italic puntualmente.
 
-### 4.4 Tokens CSS
+---
 
-```css
-:root {
-  --font-display: 'Newsreader', 'Times New Roman', serif;
-  --font-body: 'Manrope', system-ui, -apple-system, 'Segoe UI', sans-serif;
+## 4. Anatomía de slides — tipos canónicos
 
-  /* Estilo de marca por defecto para display */
-  --display-weight: 600;
-  --display-style: italic;
+Cualquier deck de Qudox se compone de combinaciones de estos 7 tipos. Claude debe identificar qué tipo corresponde a cada slide antes de empezar a maquetarlo.
 
-  /* Pesos */
-  --fw-regular: 400;
-  --fw-medium: 500;
-  --fw-semibold: 600;
-  --fw-bold: 700;
-  --fw-extrabold: 800;
+### 4.1 Tipo `cover` — Portada
 
-  /* Escala (extrapolación digital base 16px) */
-  --fs-xs: 0.75rem;     /* 12 */
-  --fs-sm: 0.875rem;    /* 14 */
-  --fs-base: 1rem;      /* 16 */
-  --fs-lg: 1.125rem;    /* 18 */
-  --fs-xl: 1.5rem;      /* 24 */
-  --fs-2xl: 2rem;       /* 32 */
-  --fs-3xl: 2.5rem;     /* 40 */
-  --fs-4xl: 3.5rem;     /* 56 */
-  --fs-5xl: 4.5rem;     /* 72 */
+**Fondo:** dark con textura orgánica verde (mezcla de verdes oscuros + brillantes con grano/ruido, capas líquidas). Si no se puede generar la textura, usar fondo sólido `#06241B` con un patrón de triángulos verdes superpuesto.
 
-  /* Line-heights */
-  --lh-tight: 1.05;     /* títulos serif */
-  --lh-snug: 1.2;       /* subtítulos */
-  --lh-normal: 1.5;     /* cuerpo */
-  --lh-relaxed: 1.65;   /* lectura larga */
+**Estructura:**
+- Logo `QUDOX` (versión blanca, con descriptor) centrado en el tercio superior.
+- Título grande **Newsreader SemiBold Italic 88–96pt, blanco**, centrado horizontalmente, posicionado en el centro vertical.
+- Subtítulo en **Manrope Regular 18–22pt blanco**, debajo del título, 2–3 líneas máx., centrado.
+- (Opcional) logo del cliente o un triángulo verde con marca en el tercio inferior.
 
-  /* Tracking */
-  --ls-tight: -0.025em; /* títulos newsreader grandes */
-  --ls-normal: 0;
-  --ls-wide: 0.08em;    /* etiquetas en mayúsculas */
-}
+**Ejemplo de contenido:**
+```
+QUDOX [logo blanco]
 
-/* Aplicación por defecto a titulares */
-h1, h2, h3 {
-  font-family: var(--font-display);
-  font-weight: var(--display-weight);
-  font-style: var(--display-style);
-  letter-spacing: var(--ls-tight);
-}
+Fase 2 - Believe It   ← Newsreader Italic 96pt
+
+Estrategia de Marca · Insights de marca, Buyer Personas,
+Brand Ladder, Brand Voice Chart y Propuesta de Valor.
 ```
 
-### 4.5 Tailwind config
+### 4.2 Tipo `toc` — Índice / Contenido de la presentación
 
-```js
-theme: {
-  extend: {
-    fontFamily: {
-      display: ['Newsreader', 'serif'],
-      body:    ['Manrope', 'system-ui', 'sans-serif'],
-    },
-  },
-}
+**Fondo:** blanco `#FFFFFF`.
+
+**Estructura:**
+- Eyebrow superior izquierda: `CONTENIDO DE LA PRESENTACIÓN` o `ÍNDICE`, Manrope Bold 12–14pt, tracking amplio, color `qx-ink-muted`.
+- Título principal: **Newsreader SemiBold Italic 37–44pt**, color `#0D1512`, alineado a la izquierda, debajo del eyebrow.
+- Lista numerada en grid de **2 columnas** (3 columnas máx. si son más de 6 ítems). Cada ítem:
+  - Número en **Newsreader SemiBold Italic 37pt color `#16B87A`** (ej. `01`).
+  - Línea divisoria fina horizontal (`#0D1512` 1px) arriba de cada ítem.
+  - Título del ítem en **Manrope Bold 20–24pt**.
+  - Descripción breve en **Manrope Regular 17–18pt** color `qx-ink-soft`, 1 línea.
+- Footer: logo `QUDOX` (versión negativa/positiva apropiada) + banda de patrón verde (ver sección 5).
+
+### 4.3 Tipo `section-divider` — Separador de sección
+
+**Fondo:** dark `#1F2937` o `#0D1512`.
+
+**Estructura:**
+- Número grande de sección: **Newsreader SemiBold Italic 54–60pt color `qx-green-bright #38E08C`**, alineado a la izquierda, posición vertical centro-alto.
+- Título de la sección debajo: **Newsreader SemiBold Italic 60–72pt color blanco**.
+- Subtítulo en **Manrope Regular 18–22pt color blanco**, 1–2 líneas.
+- Footer: logo `QUDOX` (versión blanca) abajo-izquierda + patrón decorativo de líneas finas (chevrons/curvas en tonos verde brillante, cyan apagado, yellow apagado) en el tercio inferior.
+
+### 4.4 Tipo `content-2col` — Contenido principal (texto + imagen)
+
+**Fondo:** blanco `#FFFFFF`.
+
+**Estructura:**
+- **Header (ocupa ~20% superior):**
+  - Eyebrow: nombre de la sección, Manrope Bold 12–14pt MAYÚSCULAS, color `qx-ink-muted` o `qx-green`.
+  - Título: **Newsreader SemiBold Italic 37–44pt**, color `#0D1512`.
+  - Línea divisoria horizontal fina debajo del título, color `qx-green #16B87A`, 1px, ancho ~50% del slide.
+- **Columna izquierda (~55%):**
+  - Sub-eyebrow (ej. `INSIGHT 1`): Manrope Bold 13–14pt MAYÚSCULAS, color `qx-green`.
+  - Headline del insight: **Manrope Bold 24–30pt**, color `#0D1512`, 2–3 líneas.
+  - Párrafo body: Manrope Regular 17–18pt, color `qx-ink`, line-height ~1.4, 3–6 líneas.
+  - **Callout box** opcional al final: fondo blanco con **borde izquierdo grueso verde** (3–4px `qx-green`), padding generoso, contiene una `<strong>Frase corta en Manrope Bold verde</strong> seguida de descripción en Manrope Regular`.
+- **Columna derecha (~40%):**
+  - Imagen con esquinas redondeadas (`border-radius` ~16–24px).
+- **Footer:** logo QUDOX abajo-izquierda + banda de patrón verde (~10% altura del slide).
+
+### 4.5 Tipo `content-grid` — Grid de comparación / dimensiones
+
+**Fondo:** blanco o dark según corresponda.
+
+**Estructura:**
+- Header igual a `content-2col` (eyebrow + título Newsreader Italic).
+- Grid de 3–4 columnas con:
+  - Título de columna en **Newsreader SemiBold Italic 22–28pt** color verde (sobre claro) o blanco (sobre oscuro).
+  - Sub-labels en Manrope Bold MAYÚSCULAS 11–13pt tracking amplio, color `qx-ink-muted`.
+  - Body en Manrope Regular 16–18pt.
+- Espaciado entre columnas: ~24–32pt.
+
+### 4.6 Tipo `data-callout` — Stat / dato destacado
+
+**Fondo:** dark o claro.
+
+**Estructura:**
+- Eyebrow pequeño.
+- Número o dato en **Manrope Extra Bold 72–120pt**, color `qx-green-bright` sobre dark, `qx-green` sobre claro. Letter-spacing ligeramente negativo.
+- Caption debajo en **Manrope Regular 16–18pt**, color con menos énfasis.
+- Acompañado de gráfico o ilustración si aplica.
+
+### 4.7 Tipo `closing` — Cierre / frase de impacto
+
+**Fondo:** dark con textura verde (igual que portada).
+
+**Estructura:**
+- Frase central única, en **Newsreader SemiBold Italic 40–54pt blanco**, centrada vertical y horizontalmente.
+- Eyebrow opcional debajo: nombre de fase + bullets de secciones cubiertas, Manrope Regular 13–15pt blanco con `qx-green` para el nombre del proyecto.
+- Logo QUDOX al pie centrado o abajo-izquierda.
+
+**Ejemplo de contenido:**
 ```
+Movilidad con respaldo experto.   ← Newsreader Italic 48pt blanco
 
-```html
-<!-- Titular de marca por defecto -->
-<h1 class="font-display font-semibold italic">
-  Together, we <span class="not-italic">power</span> growth.
-</h1>
+FASE 2 — BELIEVE IT
+Insights · Buyer Personas · Brand Ladder · Brand Voice · Propuesta de Valor
+
+QUDOX [logo]
 ```
 
 ---
 
-## 5. Espaciado, radios y elevación
+## 5. Patrón y elementos gráficos
 
-> *Extrapolado para producto digital. El brandbook se enfoca en print/presentaciones; estas escalas mantienen el carácter del sistema (sobrio, alto contraste, geométrico).*
+El "patrón Qudox" es uno de los activos visuales más reconocibles. Se construye con:
 
-### 5.1 Escala de espaciado (base 4px)
+- **Triángulos verdes** (chevrons apuntando hacia arriba) de distintos tamaños y rotaciones.
+- **Texturas líquidas/orgánicas verdes** con grano puntillista (efecto granito o splatter).
+- **Líneas finas** rectas y curvas en tonos `qx-green-bright`, `qx-yellow-green`, y cyan/yellow apagados — sólo en slides oscuras.
 
-```css
-:root {
-  --space-0: 0;
-  --space-1: 0.25rem;   /*  4 */
-  --space-2: 0.5rem;    /*  8 */
-  --space-3: 0.75rem;   /* 12 */
-  --space-4: 1rem;      /* 16 */
-  --space-5: 1.5rem;    /* 24 */
-  --space-6: 2rem;      /* 32 */
-  --space-7: 3rem;      /* 48 */
-  --space-8: 4rem;      /* 64 */
-  --space-9: 6rem;      /* 96 */
-  --space-10: 8rem;     /* 128 */
-}
-```
+### 5.1 Banda de patrón en footer (slides claras)
 
-### 5.2 Radios
+Una banda horizontal en el borde inferior, ~80–100pt de alto, con:
+- Logo `QUDOX` (versión negativa sobre fondo verde texturizado) a la izquierda.
+- Serie de 4–6 fragmentos de triángulos verdes mezclando: textura granito verde oscuro, verde brillante sólido, verde muy oscuro, verde-amarillo. Cada fragmento ocupa un ancho similar y juntos cubren todo el borde inferior.
 
-Geometría limpia, derivada del símbolo Q (círculo perfecto). Radios suaves, nunca exagerados.
+### 5.2 Pattern de fondo en slides oscuras
 
-```css
-:root {
-  --radius-none: 0;
-  --radius-sm: 4px;
-  --radius-md: 8px;
-  --radius-lg: 12px;
-  --radius-xl: 20px;
-  --radius-pill: 9999px;   /* botones tipo pill — alineado al carácter del símbolo Q */
-}
-```
+Líneas finas decorativas dispersas en el tercio inferior: chevrons/curvas en `qx-green-bright`, cyan suave (`#3A4A50`), yellow suave (`#5A5A30`). Sutiles, no compiten con el texto.
 
-### 5.3 Sombras
+### 5.3 Texturas de portada y cierre
 
-Sutiles. La marca trabaja con contraste de color y profundidad oscura, no con sombras dramáticas.
+Mezcla de:
+- Fondo base `#06241B`.
+- Capas de `#16B87A` y `#38E08C` con opacidad.
+- Triángulos grandes superpuestos.
+- Textura puntillista/granito en `#B6E02A` (puntos amarillo-verde dispersos).
 
-```css
-:root {
-  --shadow-sm: 0 1px 2px rgba(0, 0, 0, 0.32);
-  --shadow-md: 0 4px 12px rgba(0, 0, 0, 0.40);
-  --shadow-lg: 0 12px 32px rgba(0, 0, 0, 0.48);
-  --shadow-glow-cyan: 0 0 24px rgba(0, 255, 239, 0.32);
-  --shadow-glow-yellow: 0 0 24px rgba(234, 255, 0, 0.24);
-}
-```
+Si no es posible recrear la textura programáticamente, usar una imagen pre-renderizada como fondo de portada, o fondo sólido `#06241B` con triángulos vectoriales superpuestos.
 
-❌ Nunca aplicar sombras al logo.
+### 5.4 Reglas del patrón
 
----
+✅ **Sí:**
+- A sangre completa (full bleed) en el footer de slides claras.
+- En portadas y cierres como atmósfera de marca.
+- En section dividers, sutil en el tercio inferior.
 
-## 6. Logo y símbolo Q
-
-### 6.1 Versiones oficiales
-
-| Versión                          | Cuándo usar                                              |
-| -------------------------------- | -------------------------------------------------------- |
-| Horizontal con descriptor        | **Firma primaria.** Default en la mayoría de aplicaciones. |
-| Vertical con descriptor          | Formatos compactos o cuadrados.                          |
-| Sin descriptor                   | Marca ya reconocida en contexto.                         |
-| Ícono Q (isotipo / avatar)       | Avatares, favicons, espacios mínimos.                    |
-
-### 6.2 Construcción (módulo X = altura del símbolo Q)
-
-- Horizontal con descriptor → proporción `7.8X · 1X`, divisor `0.5X`.
-- Sin descriptor → proporción `5.65X · 1X`.
-- Vertical con descriptor → proporción `3.9X · 1X`, centrado sobre eje del símbolo.
-- Ícono Q → círculo base, proporción `1 : 1.18` (no se redibuja, no se rota, no se altera el grosor).
-
-### 6.3 Área de respeto
-
-Mínimo equivalente a una `X` (altura del símbolo Q) en los **cuatro lados**. Ningún elemento gráfico, texto o borde puede invadirla.
-
-### 6.4 Tamaños mínimos
-
-| Aplicación | Tamaño mínimo |
-| ---------- | ------------- |
-| Desktop    | 240 px        |
-| Mobile     | 140 px        |
-| Avatar     | Solo Q        |
-| Favicon    | 16 px (solo Q) |
-
-### 6.5 Versiones de color
-
-- **Positiva** sobre fondos claros.
-- **Negativa** sobre fondos oscuros.
-- Permitido sobre: blanco, dark, textura cyan, textura oscura.
-
-### 6.6 Usos incorrectos (no hacer)
-
-❌ No deformar · ❌ No rotar · ❌ No usar con bajo contraste · ❌ No recolorear · ❌ No aplicar sombras · ❌ No usar sobre fondo sin contraste suficiente.
-
----
-
-## 7. Fondos y patrón
-
-### 7.1 Sistema de fondos (3 estilos)
-
-1. **Profundidad oscura** — portadas y separadores institucionales.
-2. **Energía cyan** — piezas de alto impacto.
-3. **Atmósfera de marca** — portadas institucionales con textura líquida.
-
-Reglas: se aplican siempre a sangre completa y limpios. **Sin** filtros, sombras ni capas adicionales encima.
-
-### 7.2 El patrón Qudox
-
-Recurso gráfico derivado de la Q: combina círculos, flechas y chevrons con textura líquida.
-
-**Versiones:**
-- Texturizado sobre blanco.
-- Blanco sobre negro.
-
-**DO ✅**
-- Texturizado sobre fondo blanco.
-- Blanco sobre fondo negro.
-- Como recurso de portada o separador.
-- Como borde, marco o detalle de composición.
-- A sangre completa, sin recortes forzados.
-
-**DON'T ❌**
+❌ **No:**
 - Detrás de textos largos.
-- Cuando reduce contraste o lectura.
-- Sobre fondos de color sólido.
-- Recoloreado fuera del sistema.
-- Compitiendo con el logo o la Q.
-- Sobre data compleja o documentos legales muy formales.
+- Recoloreado fuera del sistema verde.
+- Saturando el slide (compite con contenido).
+- En slides de data densa / tablas.
+- Sobre fondos de color sólido brillante.
 
 ---
 
-## 8. Componentes UI (lineamientos)
+## 6. Logo
 
-> Extrapolado del lenguaje visual del Brandbook para producto digital. Los componentes deben sentirse **estratégicos, tecnológicos y corporativos** — sobrios, de alto contraste, sin saturación.
+### 6.1 Versiones
 
-### 8.1 Botones
+- **`QUDOX` horizontal con descriptor "Growth Marketing Company"** — firma primaria. Default en TOC, content y closing slides.
+- **`QUDOX` versión negativa (blanca)** — sobre fondos oscuros y portadas.
+- **`QUDOX` versión positiva (negra/dark)** — sobre fondos claros.
+- **Símbolo Q solo** — avatares, favicons, marcas de agua sutiles.
 
-| Variante      | Fondo                | Texto              | Borde                     | Uso                                          |
-| ------------- | -------------------- | ------------------ | ------------------------- | -------------------------------------------- |
-| Primary       | `--color-cyan`       | `--color-dark`     | ninguno                   | Acción principal. Una por vista.             |
-| Secondary     | transparente         | `--color-white`    | `1px solid --border-strong` | Acción secundaria sobre fondos oscuros.    |
-| Tertiary      | transparente         | `--color-cyan`     | ninguno                   | Enlaces y acciones de soporte.               |
-| Destructive   | `#FF4D4D` *(definir)* | `--color-white`    | ninguno                   | Acciones destructivas (no en brandbook).     |
+### 6.2 Posición típica en slides
 
-- Tipografía: `Manrope Semibold (600)` o `Bold (700)`.
-- Radio recomendado: `--radius-pill` o `--radius-md`.
-- Padding: `var(--space-3) var(--space-5)` (default).
-- ❌ Yellow no se usa como fondo de botón principal (es acento de energía puntual, no acción).
+- **Cover:** centrado horizontalmente, tercio superior.
+- **TOC, content, content-grid:** abajo-izquierda, integrado a la banda de footer.
+- **Section divider, closing:** abajo-izquierda o abajo-centro.
 
-### 8.2 Tarjetas / superficies
+### 6.3 Reglas
 
-- Fondo: `--bg-surface` o `--bg-elevated`.
-- Borde: `--border-subtle`.
-- Radio: `--radius-lg`.
-- Padding interno: `var(--space-5)` o `var(--space-6)`.
-- Dato destacado o KPI dentro de la tarjeta: `Manrope Extra Bold`, color `--color-cyan` para resalte principal.
-
-### 8.3 Inputs / formularios
-
-- Fondo: `--bg-elevated` sobre dark, o `--color-white` sobre claro.
-- Borde: `--border-default`, foco: `--color-cyan` con `--shadow-glow-cyan`.
-- Tipografía: `Manrope Regular`.
-- Labels: `Manrope Semibold` en MAYÚSCULAS (con `letter-spacing: --ls-wide`).
-
-### 8.4 Tablas y data
-
-- Headers: `Manrope Semibold` en mayúsculas.
-- Filas: `Manrope Regular`, line-height `--lh-normal`.
-- KPIs principales: `Manrope Extra Bold`, en `--color-cyan` cuando son el dato protagonista.
-- **No saturar tablas.** Si hay >5 columnas críticas, replantear como tarjetas de métrica.
-
-### 8.5 Slides de presentación (referencia)
-
-Tipos del sistema: `Portada`, `Separador`, `Frase de impacto`, `Contexto`, `Reto`, `Insight`, `Data`, `Metodología`, `Ecosistema`, `Roadmap`, `Entregables`, `Caso de éxito`, `Cierre`.
-
-Principios de slide:
-1. Una idea fuerte por slide.
-2. Títulos claros y contundentes.
-3. Textos cortos, sin párrafos extensos.
-4. Data visual antes que data saturada (3–5 datos clave máx.).
-5. Uso intencional del patrón.
-6. Contraste alto.
-7. Ritmo entre slides oscuras, claras y visuales.
-8. Cierre siempre conectado a crecimiento.
+- Área de respeto: 1 X (altura del símbolo Q) en los cuatro lados.
+- Tamaño mínimo: 140 px / 1" en slide.
+- ❌ No deformar, no rotar, no recolorear, no aplicar sombras.
 
 ---
 
-## 9. Identidad verbal (microcopy y contenido)
+## 7. Estructura típica de un deck Qudox
+
+Un deck completo sigue esta secuencia (adaptable):
+
+1. `cover` — Portada con título y subtítulo del proyecto.
+2. `toc` — Contenido de la presentación.
+3. `section-divider` — `01` + Nombre de la primera sección.
+4. `content-2col` × N — Slides de contenido de esa sección.
+5. (Repetir 3-4 para cada sección.)
+6. `closing` — Frase de cierre conectada a crecimiento.
+
+**Regla de oro:** cada sección comienza con un `section-divider` numerado. Los números (`01`, `02`, `03`…) son parte de la firma visual.
+
+---
+
+## 8. Principios de slide (no negociables)
+
+1. **Una idea fuerte por slide.** Si un slide tiene dos titulares, dividilo.
+2. **Títulos claros y contundentes.** No frases vacías como "Análisis del mercado": preferir "El mercado pide claridad, no más opciones."
+3. **Textos cortos.** Máx. 4–6 líneas de body por columna. Si hay más, partir en dos slides.
+4. **Data visual antes que data saturada.** Máximo 3–5 datos por slide.
+5. **Uso intencional del patrón.** Footer en todo slide claro de contenido. Atmósfera en portada y cierre. Resto: sin patrón.
+6. **Contraste alto.** Si dudás si se lee, no se lee.
+7. **Ritmo dark → light → dark.** Alternar tonos a lo largo del deck para mantener energía.
+8. **Cierre siempre conectado a crecimiento.** El último slide referencia el propósito de Qudox.
+
+---
+
+## 9. Identidad verbal — voz en slides
 
 ### 9.1 Tono
 
-> *Qudox habla con claridad estratégica, seguridad corporativa, sensibilidad creativa y visión tecnológica.*
+Qudox habla con **claridad estratégica, seguridad corporativa, sensibilidad creativa y visión tecnológica**. Suena experto sin sonar rígido, cercano sin sonar informal.
 
-Proyecta experiencia, pensamiento estructurado y capacidad de ejecución, sin sonar rígido, exagerado o artificial.
+### 9.2 Sí / No
 
-### 9.2 Sí somos / No somos
+| ✅ Sí                                    | ❌ No                                  |
+| ---------------------------------------- | -------------------------------------- |
+| Estratégicos y orientados a negocio      | Genéricos o decorativos                |
+| Claros y estructurados                   | Confusos o improvisados                |
+| Creativos con propósito                  | Creativos solo por estética            |
+| Tecnológicos y AI First                  | Técnicos sin bajarlo a valor           |
+| Consultivos y accionables                | Teóricos sin aplicación                |
+| Seguros y fundamentados                  | Prometedores sin sustento              |
 
-| ✅ Sí somos                          | ❌ No somos                              |
-| ------------------------------------ | ---------------------------------------- |
-| Estratégicos y orientados a negocio  | Genéricos o decorativos                  |
-| Claros y estructurados               | Confusos o improvisados                  |
-| Creativos con propósito              | Creativos solo por estética              |
-| Tecnológicos y AI First              | Técnicos sin bajarlo a valor             |
-| Consultivos y accionables            | Teóricos sin aplicación                  |
-| Cercanos con criterio profesional    | Excesivamente informales                 |
-| Seguros y fundamentados              | Prometedores sin sustento                |
-| Dinámicos y adaptables               | Rígidos o desconectados del cambio       |
+### 9.3 Territorio verbal (palabras de marca)
 
-### 9.3 Territorio verbal (vocabulario de marca)
-
-`Crecimiento` · `Ecosistema` · `Sistema` · `Estrategia` · `Performance` · `Data` · `Brandformance` · `Creatividad` · `Contenido` · `Tecnología` · `IA` · `Medios` · `Optimización` · `Comunidad` · `Audiencias` · `Insights` · `Conversión` · `Medición` · `Escala` · `Mejora continua`.
+Crecimiento · Ecosistema · Sistema · Estrategia · Performance · Data · Brandformance · Creatividad · Tecnología · IA · Medios · Optimización · Insights · Conversión · Medición · Escala · Mejora continua.
 
 ### 9.4 Lo que evitamos
 
-❌ "Agencia 360" como definición principal.
-❌ "Hacemos de todo" sin enfoque.
-❌ "Contenido bonito" como promesa.
-❌ "Viralizar" como garantía.
-❌ "Resultados garantizados" sin fundamento.
-❌ "Disruptivo" usado de forma vacía.
-❌ Lenguaje excesivamente técnico sin bajarlo a negocio.
-
-### 9.5 Elevator pitches
-
-**15 seg.** — Qudox es una Growth Marketing Company AI First que construye ecosistemas de crecimiento integrando estrategia, creatividad, data, medios y tecnología para ayudar a las marcas a crecer con mayor consistencia.
-
-**30 seg.** — En Qudox ayudamos a las marcas a dejar de depender de acciones aisladas y comenzar a operar bajo ecosistemas de crecimiento. Conectamos estrategia, creatividad, contenido, medios, data, tecnología e inteligencia artificial para construir resultados medibles, sostenibles y escalables.
+❌ "Agencia 360" · ❌ "Hacemos de todo" · ❌ "Contenido bonito" · ❌ "Viralizar" como garantía · ❌ "Resultados garantizados" · ❌ "Disruptivo" vacío · ❌ Lenguaje técnico sin bajarlo a negocio.
 
 ---
 
-## 10. Aplicaciones (dónde vive Qudox)
+## 10. Especificaciones técnicas para generar PPTX
 
-Presentaciones · Propuestas comerciales · Documentos internos · Redes sociales · Eventos · Reportes · Merch · Firmas de correo · Sitio web · Casos de éxito · Comunicación interna · Todo el ecosistema digital.
+Estas son las decisiones de implementación para crear un deck Qudox en código (pptxgenjs, python-pptx, etc).
+
+### 10.1 Dimensiones
+
+- Slide widescreen 16:9: **13.333" × 7.5"** (1920×1080 a 144dpi).
+
+### 10.2 Tipografías
+
+Las fuentes a referenciar por nombre en el archivo `.pptx`:
+
+```
+"Newsreader SemiBold"   → titulares display (siempre italic = true)
+"Manrope"               → todo lo demás
+```
+
+PowerPoint las renderizará si están instaladas en la máquina del usuario. Newsreader y Manrope son gratuitas en Google Fonts; el usuario las debe instalar localmente para ver el deck correctamente.
+
+### 10.3 Paleta hex de referencia rápida
+
+```
+qx-green        #16B87A
+qx-green-bright #38E08C
+qx-dark         #0D1512
+qx-dark-deep    #06241B
+qx-white        #FFFFFF
+qx-ink          #1F2937
+qx-ink-muted    #5D6B63
+```
+
+### 10.4 Márgenes y safe area
+
+- Margen de cada lado: **0.5"** mínimo.
+- Banda de footer de patrón ocupa los últimos **0.7–1.0"** verticales del slide.
+
+### 10.5 Espaciado entre elementos
+
+- Header → contenido: 0.5"
+- Entre columnas: 0.35"
+- Entre bloques de contenido: 0.3"
 
 ---
 
-## 11. Do's & Don'ts (consolidado)
+## 11. Do's & Don'ts (consolidado para Claude)
 
 ### ✅ DO
 
-- Usar el logo con suficiente contraste.
-- Respetar el área de seguridad del logo.
-- Aplicar la paleta con intención (75% dark+white, 15% cyan, 10% yellow+gradient).
-- Usar Newsreader Semibold Italic para momentos de marca.
-- Usar Manrope para claridad y lectura.
-- Mantener pantallas limpias y jerárquicas.
-- Usar la Q como recurso propietario.
-- Conectar siempre la comunicación con crecimiento.
-- Usar cyan para resaltar el dato protagonista.
+- Empezar siempre con `cover` → `toc` → `section-divider` → `content`.
+- Cada sección abre con un section-divider numerado en verde brillante.
+- Newsreader **siempre italic** y **siempre semibold** para titulares display.
+- Manrope sostiene el 80%+ del texto de cada slide.
+- Verde es el color institucional de presentaciones — no cyan, no yellow.
+- Footer con banda de patrón verde en todo slide claro de contenido.
+- Eyebrow en mayúsculas con tracking amplio sobre cada título.
+- Callouts con borde izquierdo verde grueso para resaltar implicaciones / conclusiones.
+- Cierre conectado a crecimiento con frase corta y contundente.
 
 ### ❌ DON'T
 
-- Saturar piezas con patrón o textura.
-- Usar fondos que dificulten la lectura.
-- Cambiar colores del logo.
-- Deformar la Q.
-- Usar tipografías externas sin criterio.
-- Convertir `QX Growth System` en marca pública.
-- Presentar servicios como acciones sueltas.
-- Comunicar sin conectar a estrategia o resultado.
-- Usar cyan o yellow como fondo sólido de página.
-- Aplicar el degradado sobre texto o como relleno del logo.
+- **No** usar cyan `#00FFEF` ni yellow `#EAFF00` puro como color principal del deck (son del producto digital, no de presentaciones).
+- **No** usar Newsreader sin italic.
+- **No** usar Calibri, Aptos, Arial decorativa ni ninguna fuente fuera de Newsreader + Manrope.
+- **No** saturar slides con patrón (footer sí, fondo completo no).
+- **No** poner párrafos largos (>6 líneas) — partir en otro slide.
+- **No** crear slides 100% texto — siempre hay imagen, dato visual, gráfico o composición.
+- **No** centrar párrafos de body — solo títulos.
+- **No** usar líneas decorativas debajo de cada título salvo en headers de content (donde sí va una fina línea verde).
+- **No** mezclar la paleta de presentaciones con la digital cyan/yellow en el mismo deck.
+- **No** convertir `QX Growth System` en marca pública o tratarla como un logo.
 
 ---
 
-## 12. Checklist antes de publicar
+## 12. Checklist antes de entregar un deck
 
-- [ ] ¿La pieza se siente estratégica, tecnológica, corporativa y creativa?
-- [ ] ¿El logo está bien aplicado (versión, contraste, área de respeto, tamaño mínimo)?
-- [ ] ¿La Q se usa correctamente (sin deformar, rotar ni recolorear)?
-- [ ] ¿El color tiene contraste suficiente?
-- [ ] ¿La tipografía respeta la jerarquía (Newsreader Semibold Italic en titulares, Manrope en cuerpo)?
-- [ ] ¿El patrón suma sin saturar?
-- [ ] ¿El mensaje suena a Qudox (claro, estratégico, accionable)?
-- [ ] ¿La comunicación conecta con crecimiento?
-- [ ] ¿La pieza podría pertenecer claramente al ecosistema Qudox?
+- [ ] ¿La portada usa Newsreader Italic grande + textura verde + logo QUDOX?
+- [ ] ¿Hay un TOC limpio con números verdes Newsreader Italic?
+- [ ] ¿Cada sección comienza con un section-divider numerado?
+- [ ] ¿Todos los content slides claros tienen banda de patrón verde en el footer?
+- [ ] ¿Cada title usa Newsreader Italic y cada body usa Manrope?
+- [ ] ¿El cierre conecta con crecimiento y usa Newsreader Italic centrado sobre dark?
+- [ ] ¿Hay ritmo entre slides claras y oscuras (no monotonía)?
+- [ ] ¿Cero uso de cyan/yellow puro? ¿Cero fuentes fuera del sistema?
+- [ ] ¿El logo QUDOX está en cada slide (excepto separadores si así se decide)?
+- [ ] ¿Cada slide pasa el filtro "una idea fuerte, lectura clara"?
 
 ---
 
 ## 13. Fuente y mantenimiento
 
-**Fuente de verdad:** Qudox Brandbook & Presentation System (Figma, archivo `QX-Brandbook`).
-**Última sincronización:** 2026-06-16.
-**Notas para agentes de IA:**
-- Si el agente necesita un valor de color, tipografía o componente que **no está aquí**, debe pedir confirmación o consultar el Brandbook antes de inventarlo.
-- Los tokens de espaciado, radios, sombras y componentes UI son **extrapolaciones digitales** consistentes con el lenguaje visual del Brandbook; el Brandbook original se enfoca en print y presentaciones.
-- Cualquier nuevo componente debe pasar el checklist de la sección 12 antes de considerarse oficial.
+**Fuente de verdad:** Qudox Brandbook & Presentation System + decks de referencia *MOTOCITY — Fase 2 (Believe It)* y *Katana — Benchmark Línea Gráfica*.
+**Última sincronización:** 2026-06-18.
+
+Si vas a producir un deck para Qudox o uno de sus clientes y algo no está cubierto aquí, **pedí confirmación antes de inventar**. Mantener consistencia con los decks de referencia es prioridad.
